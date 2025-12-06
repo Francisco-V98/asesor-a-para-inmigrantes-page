@@ -11,6 +11,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="src/styles/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -263,6 +264,121 @@
             border: 2px dashed rgba(255, 255, 255, 0.3);
         }
 
+        /* Featured Services Carousel Section */
+        .featured-services-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .featured-carousel-wrapper {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .featured-carousel {
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        /* Promo Card - Maintains exact same styling as promo-cap */
+        .promo-card {
+            display: none;
+            background: linear-gradient(135deg, var(--brand-action) 0%, #991b1b 100%);
+            color: white;
+            padding: 80px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .promo-card.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgb(0, 0, 0);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgb(255, 255, 255);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 6px 25px rgb(0, 0, 0);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .carousel-nav:hover {
+            background: var(--brand-action);
+            border-color: var(--brand-action);
+            color: white;
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 8px 30px rgba(188, 37, 39, 0.5);
+        }
+
+        .carousel-nav.prev {
+            left: -35px;
+        }
+
+        .carousel-nav.next {
+            right: -35px;
+        }
+
+        .carousel-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--slate-300);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--brand-action);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .indicator:hover {
+            background: var(--slate-400);
+        }
+
         /* About Section */
         .sc-about {
             padding: 100px 0;
@@ -321,6 +437,43 @@
         }
 
         /* Responsive */
+        /* New Services Layout Styles */
+        .horizontal-card {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            min-height: 350px;
+        }
+
+        .horizontal-img {
+            flex: 1;
+            min-width: 300px;
+            height: auto !important;
+            /* Override explicit height from general card class if any */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .horizontal-content {
+            flex: 1.5;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .secondary-countries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .secondary-countries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .landing-hero h1 {
                 font-size: 2.5rem;
@@ -328,6 +481,45 @@
 
             .about-wrapper {
                 flex-direction: column-reverse;
+            }
+
+            .horizontal-card {
+                flex-direction: column;
+            }
+
+            .horizontal-img {
+                height: 250px !important;
+            }
+
+            .secondary-countries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Carousel Mobile Adjustments */
+            .promo-card {
+                padding: 40px 30px;
+            }
+
+            .promo-content {
+                flex-direction: column;
+            }
+
+            .promo-image {
+                min-height: 250px;
+            }
+
+            .carousel-nav {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .carousel-nav.prev {
+                left: 15px;
+            }
+
+            .carousel-nav.next {
+                right: 15px;
             }
         }
     </style>
@@ -396,35 +588,70 @@
         </div>
     </section>
 
-    <!-- Promo / Featured Service (Curso CAP) -->
-    <section class="promo-cap">
+    <!-- Featured Services Carousel -->
+    <section class="featured-services-section">
         <div class="container">
-            <div class="promo-content">
-                <div class="promo-text">
-                    <span class="promo-tag">¡Oportunidad Laboral en España!</span>
-                    <h2>Curso CAP + Residencia</h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9;">
-                        España necesita más de 50.000 conductores profesionales. Fórmate con el Certificado de Aptitud
-                        Profesional (CAP) y obtén tu residencia legal por estudios con alta empleabilidad garantizada.
-                    </p>
-                    <ul style="list-style: none; margin-bottom: 30px;">
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                                style="color: var(--brand-accent); margin-right: 10px;"></i> Gestión integral de visado
-                        </li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                                style="color: var(--brand-accent); margin-right: 10px;"></i> Alojamiento incluido (1
-                            mes)</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--brand-accent); margin-right: 10px;"></i>
-                            Bolsa de empleo activa</li>
-                    </ul>
-                    <a href="screens/countries/spain/curso-cap/index.html" class="cta-button"
-                        style="background: white; color: var(--brand-action);">
-                        Ver Información del Programa
-                    </a>
+            <div class="section-header">
+                <h2>Servicios Destacados</h2>
+                <p>Descubre nuestras oportunidades más solicitadas</p>
+            </div>
+
+            <div class="featured-carousel-wrapper">
+                <!-- Navigation Arrows -->
+                <button class="carousel-nav prev" id="carousel-prev" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-nav next" id="carousel-next" aria-label="Siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Carousel Container -->
+                <div class="featured-carousel" id="featured-carousel">
+                    <!-- Slide 1: Curso CAP -->
+                    <div class="promo-card active">
+                        <div class="promo-content">
+                            <div class="promo-text">
+                                <span class="promo-tag">¡Oportunidad Laboral en España!</span>
+                                <h2>Curso CAP + Residencia</h2>
+                                <p style="font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9;">
+                                    España necesita más de 50.000 conductores profesionales. Fórmate con el Certificado
+                                    de Aptitud
+                                    Profesional (CAP) y obtén tu residencia legal por estudios con alta empleabilidad
+                                    garantizada.
+                                </p>
+                                <ul style="list-style: none; margin-bottom: 30px;">
+                                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                            style="color: var(--brand-accent); margin-right: 10px;"></i> Gestión
+                                        integral de visado
+                                    </li>
+                                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                            style="color: var(--brand-accent); margin-right: 10px;"></i> Alojamiento
+                                        incluido (1
+                                        mes)</li>
+                                    <li><i class="fas fa-check-circle"
+                                            style="color: var(--brand-accent); margin-right: 10px;"></i>
+                                        Bolsa de empleo activa</li>
+                                </ul>
+                                <a href="screens/countries/spain/curso-cap/index.html" class="cta-button"
+                                    style="background: white; color: var(--brand-action);">
+                                    Ver Información del Programa
+                                </a>
+                            </div>
+                            <!-- Placeholder for Image -->
+                            <div class="promo-image">
+                                <span style="color: white; opacity: 0.7;">[ Imagen: Conductor / Camión / Clase ]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder for future slides -->
+                    <!-- Add more promo-card divs here with the same structure -->
                 </div>
-                <!-- Placeholder for Image -->
-                <div class="promo-image">
-                    <span style="color: white; opacity: 0.7;">[ Imagen: Conductor / Camión / Clase ]</span>
+
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-slide="0"></span>
+                    <!-- Add more indicators as you add slides -->
                 </div>
             </div>
         </div>
@@ -438,84 +665,117 @@
                 <p>Selecciona el país donde quieres construir tu futuro.</p>
             </div>
 
-            <div class="country-cards-grid">
-                <!-- Spain -->
-                <article class="country-card">
-                    <div class="country-img-placeholder">
+            <!-- Featured Destination: Spain -->
+            <div class="featured-destination" style="margin-bottom: 40px;">
+                <article class="country-card horizontal-card">
+                    <div class="country-img-placeholder horizontal-img">
                         [ Imagen: Madrid / Paisaje España ]
                     </div>
-                    <div class="country-content">
+                    <div class="country-content horizontal-content">
                         <div class="country-header">
                             <h3 class="country-title">España</h3>
-                            <span class="country-flag">🇪🇸</span>
+                            <span class="country-flag"><span class="flag-icon flag-icon-es"></span></span>
                         </div>
-                        <ul class="service-list-preview">
-                            <li><i class="fas fa-check"></i> Nacionalidad Española</li>
-                            <li><i class="fas fa-check"></i> Arraigo Social y Laboral</li>
-                            <li><i class="fas fa-check"></i> Visado Nómada Digital</li>
-                            <li><i class="fas fa-check"></i> Reagrupación Familiar</li>
-                        </ul>
-                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                        <p style="margin-bottom: 20px; color: var(--slate-600);">Líderes en extranjería española.
+                            Gestionamos tu residencia, nacionalidad y permisos con la mayor tasa de éxito.</p>
+                        <div class="Horizontal-services-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px;">
+                            <ul class="service-list-preview" style="border: none; padding: 0; margin: 0;">
+                                <li><i class="fas fa-check"></i> Curso CAP + Residencia</li>
+                                <li><i class="fas fa-check"></i> Nacionalidad Española</li>
+                            </ul>
+                            <ul class="service-list-preview" style="border: none; padding: 0; margin: 0;">
+                                <li><i class="fas fa-check"></i> Residencia y Permisos</li>
+                                <li><i class="fas fa-check"></i> Arraigo Sociolaboral</li>
+                            </ul>
+                            <ul class="service-list-preview" style="border: none; padding: 0; margin: 0;">
+                                <li><i class="fas fa-check"></i> Nómada Digital</li>
+                                <li><i class="fas fa-check"></i> Trámites Específicos</li>
+                            </ul>
+                        </div>
+                        <a href="screens/countries/spain/curso-cap/index.html" class="country-link">Explorar Todos los
+                            Trámites <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
+            </div>
 
-                <!-- Portugal -->
+            <!-- Secondary Destinations Grid -->
+            <div class="secondary-countries-grid">
+                <!-- Venezuela -->
                 <article class="country-card">
                     <div class="country-img-placeholder">
-                        [ Imagen: Lisboa / Paisaje Portugal ]
+                        [ Imagen: Caracas / Venezuela ]
                     </div>
                     <div class="country-content">
                         <div class="country-header">
-                            <h3 class="country-title">Portugal</h3>
-                            <span class="country-flag">🇵🇹</span>
+                            <h3 class="country-title">Venezuela</h3>
+                            <span class="country-flag"><span class="flag-icon flag-icon-ve"></span></span>
                         </div>
                         <ul class="service-list-preview">
-                            <li><i class="fas fa-check"></i> Visa D7 (Jubilados/Rentas)</li>
-                            <li><i class="fas fa-check"></i> Residencia por Trabajo</li>
-                            <li><i class="fas fa-check"></i> Ciudadanía Portuguesa</li>
-                            <li><i class="fas fa-check"></i> Visa Nómada Digital</li>
+                            <li><i class="fas fa-check"></i> Pasaporte</li>
+                            <li><i class="fas fa-check"></i> Apostilla</li>
+                            <li><i class="fas fa-check"></i> Antecedentes Penales</li>
+                            <li><i class="fas fa-check"></i> Cédula de Identidad</li>
                         </ul>
-                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="country-link">Ver Servicios <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
 
                 <!-- USA -->
                 <article class="country-card">
                     <div class="country-img-placeholder">
-                        [ Imagen: New York / Estatua Libertad ]
+                        [ Imagen: New York / USA ]
                     </div>
                     <div class="country-content">
                         <div class="country-header">
                             <h3 class="country-title">Estados Unidos</h3>
-                            <span class="country-flag">🇺🇸</span>
+                            <span class="country-flag"><span class="flag-icon flag-icon-us"></span></span>
                         </div>
                         <ul class="service-list-preview">
-                            <li><i class="fas fa-check"></i> Visas de Turismo (B1/B2)</li>
-                            <li><i class="fas fa-check"></i> Peticiones Familiares</li>
-                            <li><i class="fas fa-check"></i> Parole Humanitario</li>
-                            <li><i class="fas fa-check"></i> Visas de Talento (O1)</li>
+                            <li><i class="fas fa-check"></i> Visas de Inmigrante</li>
+                            <li><i class="fas fa-check"></i> Visas No Inmigrante</li>
+                            <li><i class="fas fa-check"></i> Permisos de Trabajo</li>
+                            <li><i class="fas fa-check"></i> Waivers y TPS</li>
                         </ul>
-                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="country-link">Ver Servicios <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Portugal -->
+                <article class="country-card">
+                    <div class="country-img-placeholder">
+                        [ Imagen: Lisboa / Portugal ]
+                    </div>
+                    <div class="country-content">
+                        <div class="country-header">
+                            <h3 class="country-title">Portugal</h3>
+                            <span class="country-flag"><span class="flag-icon flag-icon-pt"></span></span>
+                        </div>
+                        <ul class="service-list-preview">
+                            <li><i class="fas fa-check"></i> Ciudadanía</li>
+                            <li><i class="fas fa-check"></i> Residencia</li>
+                            <li><i class="fas fa-check"></i> Visa Trabajo/Estudio</li>
+                            <li><i class="fas fa-check"></i> Reagrupación</li>
+                        </ul>
+                        <a href="#" class="country-link">Ver Servicios <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
 
                 <!-- Dubai -->
                 <article class="country-card">
                     <div class="country-img-placeholder">
-                        [ Imagen: Burj Khalifa / Dubái ]
+                        [ Imagen: Dubái / EAU ]
                     </div>
                     <div class="country-content">
                         <div class="country-header">
-                            <h3 class="country-title">Dubái (EAU)</h3>
-                            <span class="country-flag">🇦🇪</span>
+                            <h3 class="country-title">Dubái</h3>
+                            <span class="country-flag"><span class="flag-icon flag-icon-ae"></span></span>
                         </div>
                         <ul class="service-list-preview">
-                            <li><i class="fas fa-check"></i> Golden Visa (10 años)</li>
-                            <li><i class="fas fa-check"></i> Residencia para Inversores</li>
-                            <li><i class="fas fa-check"></i> Creación de Empresas</li>
-                            <li><i class="fas fa-check"></i> Visa Freelance</li>
+                            <li><i class="fas fa-check"></i> Residencia Dorada</li>
+                            <li><i class="fas fa-check"></i> Asesoría General</li>
                         </ul>
-                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="country-link">Ver Servicios <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
             </div>
@@ -672,6 +932,7 @@
     </footer>
 
     <script src="src/js/components/Navbar.js"></script>
+    <script src="src/js/carousel.js"></script>
 </body>
 
 </html>

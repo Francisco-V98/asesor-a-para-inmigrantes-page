@@ -4,124 +4,670 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asesoría para Inmigrantes | Tu futuro comienza aquí</title>
+    <title>Asesoría para Inmigrantes | España, Portugal, USA y Dubái</title>
     <meta name="description"
-        content="Servicios profesionales de inmigración y extranjería para España, Portugal, USA, Venezuela y Dubái.">
+        content="Asesoría Legal de Inmigración y Extranjería. Expertos en trámites para España, Portugal, Estados Unidos y Dubái. Tu futuro legal comienza aquí.">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="src/styles/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Specific Landing Page Styles - Consolidate into main.css later if desired */
+
+        .landing-hero {
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/placeholders/hero-bg-placeholder.jpg');
+            /* Placeholder image */
+            background-color: var(--slate-900);
+            /* Fallback */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .landing-hero .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .landing-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .landing-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+            border-color: var(--slate-100);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--red-50);
+            color: var(--brand-action);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--brand-action);
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--slate-800);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--slate-600);
+            line-height: 1.6;
+        }
+
+        /* Services Preview Section */
+        .services-section {
+            padding: 80px 0;
+            background: var(--slate-50);
+        }
+
+        .country-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .country-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .country-img-placeholder {
+            height: 200px;
+            background-color: var(--slate-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-400);
+            font-weight: 500;
+        }
+
+        .country-content {
+            padding: 30px;
+        }
+
+        .country-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .country-flag {
+            font-size: 2.5rem;
+        }
+
+        .country-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+
+        .service-list-preview {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .service-list-preview li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--slate-100);
+            color: var(--slate-600);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-list-preview li:last-child {
+            border-bottom: none;
+        }
+
+        .service-list-preview li i {
+            color: var(--success);
+            font-size: 0.8rem;
+        }
+
+        .country-link {
+            display: inline-block;
+            color: var(--brand-action);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .country-link:hover {
+            gap: 12px;
+        }
+
+        /* Promo CAP Section */
+        .promo-cap {
+            background: linear-gradient(135deg, var(--brand-action) 0%, #991b1b 100%);
+            color: white;
+            padding: 80px 0;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .promo-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .promo-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .promo-tag {
+            background: var(--brand-accent);
+            color: var(--slate-900);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .promo-image {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        /* About Section */
+        .sc-about {
+            padding: 100px 0;
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            aspect-ratio: 1/1;
+            background-color: var(--slate-200);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--brand-action);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--slate-800);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .astat h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-action);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .landing-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-wrapper {
+                flex-direction: column-reverse;
+            }
+        }
+    </style>
 </head>
 
-<body class="landing-page">
-
-    <!-- Hero Section -->
-    <!-- Global Navbar Container -->
+<body>
+    <!-- Global Navbar -->
     <div id="global-navbar"></div>
 
     <!-- Hero Section -->
-    <header class="hero-section">
+    <header class="landing-hero">
         <div class="container">
-            <!-- Old Nav Removed -->
-
-
-            <div class="hero-content">
-                <span class="hero-tag">Servicios Legales Internacionales</span>
-                <h1>Tu Puerta al Mundo,<br>Sin Fronteras.</h1>
-                <p>Gestionamos tus trámites de inmigración y extranjería con eficiencia y profesionalismo. Especialistas
-                    en España, Portugal, USA, Venezuela y EAU.</p>
-                <div class="hero-actions">
-                    <a href="screens/general/dashboard/index.html" class="cta-button primary">
-                        Acceder a la Plataforma <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#servicios" class="cta-button secondary">
-                        Ver Servicios
-                    </a>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat">
-                        <strong>4+</strong>
-                        <span>Países</span>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat">
-                        <strong>15+</strong>
-                        <span>Servicios</span>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat">
-                        <strong>100%</strong>
-                        <span>Compromiso</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-bg-overlay"></div>
-    </header>
-
-    <!-- Services Preview -->
-    <section id="servicios" class="landing-services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestras Especialidades</h2>
-                <p>Selecciona tu destino y comienza tu nueva vida</p>
-            </div>
-
-            <div class="services-preview-grid">
-                <!-- Spain -->
-                <div class="preview-card spain">
-                    <div class="card-icon">🇪🇸</div>
-                    <h3>España</h3>
-                    <p>Nacionalidad, Arraigos, Nómada Digital y más.</p>
-                </div>
-
-                <!-- Portugal -->
-                <div class="preview-card portugal">
-                    <div class="card-icon">🇵🇹</div>
-                    <h3>Portugal</h3>
-                    <p>Visas D7, Ciudadanía y Residencias.</p>
-                </div>
-
-                <!-- USA -->
-                <div class="preview-card usa">
-                    <div class="card-icon">🇺🇸</div>
-                    <h3>Estados Unidos</h3>
-                    <p>Green Card, Visas de Trabajo y Turismo.</p>
-                </div>
-
-                <!-- Venezuela -->
-                <div class="preview-card venezuela">
-                    <div class="card-icon">🇻🇪</div>
-                    <h3>Venezuela</h3>
-                    <p>Pasaportes, Apostillas y Legalizaciones.</p>
-                </div>
-
-                <!-- Dubai -->
-                <div class="preview-card dubai">
-                    <div class="card-icon">🇦🇪</div>
-                    <h3>Dubái</h3>
-                    <p>Golden Visa y Residencia.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Banner -->
-    <section class="contact-banner">
-        <div class="container">
-            <div class="banner-content">
-                <h2>¿Necesitas asesoría personalizada?</h2>
-                <p>Nuestro equipo de expertos está listo para ayudarte en cada paso.</p>
-                <a href="https://wa.me/34682518339" target="_blank" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+            <span class="hero-badge">Asesoría Legal Internacional</span>
+            <h1>Tu Pasaporte a una<br>Nueva Vida.</h1>
+            <p>Expertos en Inmigración y Extranjería. Te acompañamos paso a paso para vivir legalmente en España,
+                Portugal, USA y Dubái.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/34682518339" target="_blank" class="cta-button">
+                    Agendar Evaluación Gratuita <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#servicios" class="cta-button"
+                    style="background: white; color: var(--slate-900); margin-left: 15px;">
+                    Ver Servicios
                 </a>
             </div>
         </div>
+    </header>
+
+    <!-- Why Choose Us -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>Más que abogados, somos tu aliado estratégico en el proceso migratorio.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Respuesta Rápida</h3>
+                    <p>Sabemos que el tiempo es oro. Garantizamos respuestas en menos de 24 horas laborables.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>100% Online</h3>
+                    <p>Asesorías por videollamada desde cualquier parte del mundo. Sin desplazamientos innecesarios.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Empatía y Resultados</h3>
+                    <p>Entendemos tu historia porque también hemos sido inmigrantes. Trato humano y profesional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Alcance Global</h3>
+                    <p>Especialistas en múltiples jurisdicciones: Europa, Norteamérica y Medio Oriente.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer class="landing-footer">
+    <!-- Promo / Featured Service (Curso CAP) -->
+    <section class="promo-cap">
         <div class="container">
-            <p>&copy; 2024 Asesoría para Inmigrantes. Abog. Milagros Mena.</p>
+            <div class="promo-content">
+                <div class="promo-text">
+                    <span class="promo-tag">¡Oportunidad Laboral en España!</span>
+                    <h2>Curso CAP + Residencia</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9;">
+                        España necesita más de 50.000 conductores profesionales. Fórmate con el Certificado de Aptitud
+                        Profesional (CAP) y obtén tu residencia legal por estudios con alta empleabilidad garantizada.
+                    </p>
+                    <ul style="list-style: none; margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                style="color: var(--brand-accent); margin-right: 10px;"></i> Gestión integral de visado
+                        </li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                style="color: var(--brand-accent); margin-right: 10px;"></i> Alojamiento incluido (1
+                            mes)</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--brand-accent); margin-right: 10px;"></i>
+                            Bolsa de empleo activa</li>
+                    </ul>
+                    <a href="screens/countries/spain/curso-cap/index.html" class="cta-button"
+                        style="background: white; color: var(--brand-action);">
+                        Ver Información del Programa
+                    </a>
+                </div>
+                <!-- Placeholder for Image -->
+                <div class="promo-image">
+                    <span style="color: white; opacity: 0.7;">[ Imagen: Conductor / Camión / Clase ]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Destinos y Servicios</h2>
+                <p>Selecciona el país donde quieres construir tu futuro.</p>
+            </div>
+
+            <div class="country-cards-grid">
+                <!-- Spain -->
+                <article class="country-card">
+                    <div class="country-img-placeholder">
+                        [ Imagen: Madrid / Paisaje España ]
+                    </div>
+                    <div class="country-content">
+                        <div class="country-header">
+                            <h3 class="country-title">España</h3>
+                            <span class="country-flag">🇪🇸</span>
+                        </div>
+                        <ul class="service-list-preview">
+                            <li><i class="fas fa-check"></i> Nacionalidad Española</li>
+                            <li><i class="fas fa-check"></i> Arraigo Social y Laboral</li>
+                            <li><i class="fas fa-check"></i> Visado Nómada Digital</li>
+                            <li><i class="fas fa-check"></i> Reagrupación Familiar</li>
+                        </ul>
+                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Portugal -->
+                <article class="country-card">
+                    <div class="country-img-placeholder">
+                        [ Imagen: Lisboa / Paisaje Portugal ]
+                    </div>
+                    <div class="country-content">
+                        <div class="country-header">
+                            <h3 class="country-title">Portugal</h3>
+                            <span class="country-flag">🇵🇹</span>
+                        </div>
+                        <ul class="service-list-preview">
+                            <li><i class="fas fa-check"></i> Visa D7 (Jubilados/Rentas)</li>
+                            <li><i class="fas fa-check"></i> Residencia por Trabajo</li>
+                            <li><i class="fas fa-check"></i> Ciudadanía Portuguesa</li>
+                            <li><i class="fas fa-check"></i> Visa Nómada Digital</li>
+                        </ul>
+                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- USA -->
+                <article class="country-card">
+                    <div class="country-img-placeholder">
+                        [ Imagen: New York / Estatua Libertad ]
+                    </div>
+                    <div class="country-content">
+                        <div class="country-header">
+                            <h3 class="country-title">Estados Unidos</h3>
+                            <span class="country-flag">🇺🇸</span>
+                        </div>
+                        <ul class="service-list-preview">
+                            <li><i class="fas fa-check"></i> Visas de Turismo (B1/B2)</li>
+                            <li><i class="fas fa-check"></i> Peticiones Familiares</li>
+                            <li><i class="fas fa-check"></i> Parole Humanitario</li>
+                            <li><i class="fas fa-check"></i> Visas de Talento (O1)</li>
+                        </ul>
+                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Dubai -->
+                <article class="country-card">
+                    <div class="country-img-placeholder">
+                        [ Imagen: Burj Khalifa / Dubái ]
+                    </div>
+                    <div class="country-content">
+                        <div class="country-header">
+                            <h3 class="country-title">Dubái (EAU)</h3>
+                            <span class="country-flag">🇦🇪</span>
+                        </div>
+                        <ul class="service-list-preview">
+                            <li><i class="fas fa-check"></i> Golden Visa (10 años)</li>
+                            <li><i class="fas fa-check"></i> Residencia para Inversores</li>
+                            <li><i class="fas fa-check"></i> Creación de Empresas</li>
+                            <li><i class="fas fa-check"></i> Visa Freelance</li>
+                        </ul>
+                        <a href="#" class="country-link">Explorar Trámites <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="sc-about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <!-- Placeholder -->
+                    <div
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--slate-500); border-radius: 20px;">
+                        [ Foto: Abog. Milagros Mena ]
+                    </div>
+                </div>
+                <div class="about-text">
+                    <span style="color: var(--brand-action); font-weight: 600; text-transform: uppercase;">Sobre
+                        Nosotros</span>
+                    <h2>Comprometidos con tu éxito migratorio</h2>
+                    <p style="margin-bottom: 20px; color: var(--slate-600); font-size: 1.1rem;">
+                        Soy <strong>Milagros Mena</strong>, abogada colegiada y fundadora de Asesoría para Inmigrantes.
+                        Nuestro despacho nace con la misión de brindar seguridad jurídica, honestidad y claridad en cada
+                        trámite.
+                    </p>
+                    <p style="margin-bottom: 30px; color: var(--slate-600);">
+                        A diferencia de otros gestores, analizamos tu perfil de manera integral para ofrecerte la vía
+                        más segura y efectiva para obtener tu residencia. No vendemos trámites, construimos planes de
+                        vida.
+                    </p>
+
+                    <div class="about-stats">
+                        <div class="astat">
+                            <h4>15+</h4>
+                            <span>Años de Exp.</span>
+                        </div>
+                        <div class="astat">
+                            <h4>2.5k+</h4>
+                            <span>Casos Exitosos</span>
+                        </div>
+                        <div class="astat">
+                            <h4>4</h4>
+                            <span>Sedes Globales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (Reused styles from main.css roughly, adapted structure) -->
+    <section class="testimonials" style="background: var(--slate-50); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Clientes Felices</h2>
+                <p>Historias reales de personas que ya viven su sueño.</p>
+            </div>
+
+            <!-- Simple Grid for Testimonials -->
+            <div class="features-grid" style="margin-top: 40px;">
+                <div class="feature-card" style="background: white; text-align: left;">
+                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Excelente atención. Me ayudaron con mi visado
+                        de estudiante en España y todo salió perfecto. Milagros es muy atenta."</p>
+                    <strong>- Sofia R. (Chile)</strong>
+                </div>
+                <div class="feature-card" style="background: white; text-align: left;">
+                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Logré mi Golden Visa en Dubai gracias a su
+                        equipo. El proceso fue rápido y transparente. 100% recomendados."</p>
+                    <strong>- Carlos M. (España)</strong>
+                </div>
+                <div class="feature-card" style="background: white; text-align: left;">
+                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Resolvieron mi caso de nacionalidad española
+                        que estaba atascado años. Profesionalidad total."</p>
+                    <strong>- Laura V. (Venezuela)</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="contact-banner"
+        style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('assets/placeholders/hero-bg-placeholder.jpg'); background-color: var(--slate-900); padding: 80px 0; text-align: center; color: white; background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="banner-content">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">¿Necesitas asesoría personalizada?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Agenda una cita hoy mismo y deja tu
+                    caso en manos de expertos.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/34682518339" target="_blank" class="cta-button">
+                        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                    </a>
+                    <a href="screens/general/dashboard/index.html" class="cta-button"
+                        style="background: transparent; border: 2px solid white;">
+                        Acceder al Área de Clientes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Asesoría para Inmigrantes</h4>
+                    <p style="opacity: 0.7;">Expertos en derecho migratorio y extranjería. Soluciones legales para un
+                        mundo sin fronteras.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Enlaces Rápidos</h4>
+                    <ul style="list-style: none; opacity: 0.8;">
+                        <li style="margin-bottom: 10px;"><a href="#"
+                                style="color: white; text-decoration: none;">Inicio</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#servicios"
+                                style="color: white; text-decoration: none;">Servicios</a></li>
+                        <li style="margin-bottom: 10px;"><a href="screens/countries/spain/curso-cap/index.html"
+                                style="color: white; text-decoration: none;">Curso CAP</a></li>
+                        <li style="margin-bottom: 10px;"><a href="screens/general/dashboard/index.html"
+                                style="color: white; text-decoration: none;">Área de Clientes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Contacto</h4>
+                    <ul style="list-style: none; opacity: 0.8;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-map-marker-alt"
+                                style="margin-right: 10px;"></i> Calle de Galileo 70, Madrid</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-phone" style="margin-right: 10px;"></i> +34
+                            682 51 83 39</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i>
+                            info@asesoriaparainmigrantes.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; opacity: 0.6;">
+                <p>&copy; 2024 Asesoría para Inmigrantes. Abog. Milagros Mena. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 

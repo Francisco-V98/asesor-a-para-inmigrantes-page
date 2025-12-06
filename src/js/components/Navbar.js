@@ -8,6 +8,7 @@ class GlobalNavbar {
             {
                 label: 'Servicios',
                 href: '#',
+                isWide: true, // Marker for full-width/wide alignment behavior
                 megaMenu: [
                     {
                         country: 'España',
@@ -62,7 +63,46 @@ class GlobalNavbar {
                     }
                 ]
             },
-            { label: 'Área de Clientes', href: `${this.rootPath}screens/general/dashboard/index.html`, active: this.isPage('dashboard/index.html') }
+            {
+                label: 'Sistema de Procesos',
+                href: '#',
+                megaMenu: [
+                    {
+                        services: [
+                            { label: 'Consulta Inicial', href: '#' },
+                            { label: 'Asesoría Personalizada', href: '#' },
+                            { label: 'Gestión de Trámites', href: '#' }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: 'Centro de Recursos',
+                href: '#',
+                megaMenu: [
+                    {
+                        services: [
+                            { label: 'Blog y Noticias', href: '#' },
+                            { label: 'Guías Descargables', href: '#' },
+                            { label: 'Casos de Éxito', href: '#' }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: 'Información Corporativa',
+                href: '#',
+                megaMenu: [
+                    {
+                        services: [
+                            { label: 'Abog. Milagros Mena', href: '#' },
+                            { label: 'Equipo de Abogados', href: '#' },
+                            { label: 'Oficinas', href: '#' }
+                        ]
+                    }
+                ]
+            },
+            { label: 'Canales de Contacto', href: 'https://wa.me/34682518339' }
         ];
     }
 
@@ -122,6 +162,12 @@ class GlobalNavbar {
                     </div>
                 </div>
             </nav>
+            
+            <!-- Floating Client Area Button -->
+            <a href="${this.rootPath}screens/general/dashboard/index.html" class="floating-client-btn" title="Área de Clientes">
+                <i class="fas fa-user-circle"></i>
+                <span class="tooltip">Área de Clientes</span>
+            </a>
         `;
 
         this.addEventListeners();
@@ -129,9 +175,10 @@ class GlobalNavbar {
 
     renderMenuItems() {
         return this.menuItems.map(item => {
+            const staticClass = item.isWide ? 'nav-item-static' : '';
             if (item.megaMenu) {
                 return `
-                    <li class="nav-item has-dropdown">
+                    <li class="nav-item has-dropdown ${staticClass}">
                         <a href="${item.href}" class="nav-link dropdown-toggle">
                             ${item.label} <i class="fas fa-chevron-down" style="font-size: 0.8em;"></i>
                         </a>
@@ -139,10 +186,12 @@ class GlobalNavbar {
                             <div class="mega-menu-content">
                                 ${item.megaMenu.map(country => `
                                     <div class="mega-menu-column">
-                                        <div class="mega-menu-header">
-                                            <span class="mega-menu-icon">${country.icon}</span>
-                                            <h3>${country.country}</h3>
-                                        </div>
+                                        ${(country.country || country.icon) ? `
+                                            <div class="mega-menu-header">
+                                                ${country.icon ? `<span class="mega-menu-icon">${country.icon}</span>` : ''}
+                                                ${country.country ? `<h3>${country.country}</h3>` : ''}
+                                            </div>
+                                        ` : ''}
                                         <ul class="mega-menu-list">
                                             ${country.services.map(service => `
                                                 <li>
@@ -154,6 +203,21 @@ class GlobalNavbar {
                                 `).join('')}
                             </div>
                         </div>
+                    </li>
+                `;
+            } else if (item.dropdown) {
+                return `
+                    <li class="nav-item has-dropdown">
+                        <a href="${item.href}" class="nav-link dropdown-toggle">
+                            ${item.label} <i class="fas fa-chevron-down" style="font-size: 0.8em;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            ${item.dropdown.map(subItem => `
+                                <li>
+                                    <a href="${subItem.href}">${subItem.label}</a>
+                                </li>
+                            `).join('')}
+                        </ul>
                     </li>
                 `;
             }

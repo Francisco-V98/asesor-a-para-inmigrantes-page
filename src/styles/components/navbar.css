@@ -1,4 +1,8 @@
 /* Global Navbar Styles */
+body {
+    padding-top: var(--navbar-height);
+}
+
 :root {
     --navbar-height: 80px;
     --navbar-bg: #FFFFFF;

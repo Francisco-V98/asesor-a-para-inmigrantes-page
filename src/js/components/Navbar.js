@@ -13,7 +13,7 @@ class GlobalNavbar {
                         country: 'España',
                         icon: '🇪🇸',
                         services: [
-                            { label: 'Curso CAP', href: `${this.rootPath}countries/spain/curso-cap/` },
+                            { label: 'Curso CAP', href: `${this.rootPath}screens/countries/spain/curso-cap/index.html` },
                             { label: 'Nacionalidad Española', href: '#' },
                             { label: 'Residencia y Permisos', href: '#' },
                             { label: 'Arraigo Sociolaboral', href: '#' },
@@ -62,16 +62,15 @@ class GlobalNavbar {
                     }
                 ]
             },
-            { label: 'Área de Clientes', href: `${this.rootPath}dashboard.html`, active: this.isPage('dashboard.html') }
+            { label: 'Área de Clientes', href: `${this.rootPath}screens/general/dashboard/index.html`, active: this.isPage('dashboard/index.html') }
         ];
     }
 
     calculateRootPath() {
-        // Simple logic: if we are deeper, go back up.
-        // We know the structure: / (root) or /countries/...
         const path = window.location.pathname;
-        if (path.includes('/countries/spain/curso-cap/')) return '../../../';
-        if (path.includes('/countries/')) return '../../'; // Generic 2 levels deep
+        if (path.includes('/screens/countries/spain/curso-cap/')) return '../../../../';
+        if (path.includes('/screens/general/dashboard/')) return '../../../';
+        if (path.includes('/screens/countries/')) return '../../../';
         return './';
     }
 
@@ -208,8 +207,14 @@ class GlobalNavbar {
     }
 }
 
-// Auto-initialize if container exists
-document.addEventListener('DOMContentLoaded', () => {
+// Auto-initialize
+const initNavbar = () => {
     const navbar = new GlobalNavbar();
     navbar.render();
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavbar);
+} else {
+    initNavbar();
+}

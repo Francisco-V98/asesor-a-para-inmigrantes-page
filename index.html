@@ -1,432 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asesoría para Inmigrantes | Servicios de Inmigración y Extranjería</title>
-    <meta name="description" content="Especialistas en trámites de extranjería e inmigración. Servicios profesionales para España, Portugal, USA y Dubai. Tu futuro legal comienza aquí.">
+    <title>Asesoría para Inmigrantes | Tu futuro comienza aquí</title>
+    <meta name="description"
+        content="Servicios profesionales de inmigración y extranjería para España, Portugal, USA, Venezuela y Dubái.">
     <link rel="stylesheet" href="src/styles/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
-    <!-- Project Overview Header -->
-    <header class="project-overview">
+<body class="landing-page">
+
+    <!-- Hero Section -->
+    <!-- Global Navbar Container -->
+    <div id="global-navbar"></div>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
         <div class="container">
-            <div class="overview-header">
-                <h1 class="project-title">Asesoría para Inmigrantes</h1>
-                <p class="project-subtitle">Plataforma Global de Servicios de Inmigración</p>
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">4</span>
-                        <span class="stat-label">Países</span>
+            <!-- Old Nav Removed -->
+
+
+            <div class="hero-content">
+                <span class="hero-tag">Servicios Legales Internacionales</span>
+                <h1>Tu Puerta al Mundo,<br>Sin Fronteras.</h1>
+                <p>Gestionamos tus trámites de inmigración y extranjería con eficiencia y profesionalismo. Especialistas
+                    en España, Portugal, USA, Venezuela y EAU.</p>
+                <div class="hero-actions">
+                    <a href="dashboard.html" class="cta-button primary">
+                        Acceder a la Plataforma <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#servicios" class="cta-button secondary">
+                        Ver Servicios
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong>4+</strong>
+                        <span>Países</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Servicios</span>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <strong>15+</strong>
+                        <span>Servicios</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Activo</span>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <strong>100%</strong>
+                        <span>Compromiso</span>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="hero-bg-overlay"></div>
     </header>
 
-    <!-- Main Navigation Dashboard -->
-    <main class="dashboard">
+    <!-- Services Preview -->
+    <section id="servicios" class="landing-services">
         <div class="container">
-            <!-- Countries Section - Primary Focus -->
-            <section class="dashboard-section primary">
-                <div class="section-header">
-                    <h2><i class="fas fa-globe-americas"></i> Servicios por País</h2>
-                    <p>Gestión de servicios de inmigración organizados por jurisdicción</p>
+            <div class="section-title">
+                <h2>Nuestras Especialidades</h2>
+                <p>Selecciona tu destino y comienza tu nueva vida</p>
+            </div>
+
+            <div class="services-preview-grid">
+                <!-- Spain -->
+                <div class="preview-card spain">
+                    <div class="card-icon">🇪🇸</div>
+                    <h3>España</h3>
+                    <p>Nacionalidad, Arraigos, Nómada Digital y más.</p>
                 </div>
-                
-                <div class="countries-dashboard">
-                    <!-- Spain - Main Active Country -->
-                    <div class="country-panel spain-panel active">
-                        <div class="country-header">
-                            <div class="country-info">
-                                <span class="flag">🇪🇸</span>
-                                <div class="country-details">
-                                    <h3>ESPAÑA</h3>
-                                    <span class="country-status active">Principal • 6 Servicios</span>
-                                </div>
-                            </div>
-                            <div class="country-progress">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 16.7%"></div>
-                                </div>
-                                <span class="progress-text">1/6 Activo</span>
-                            </div>
-                        </div>
-                        
-                        <div class="services-grid">
-                            <a href="countries/spain/curso-cap/" class="service-card active">
-                                <div class="service-icon">
-                                    <i class="fas fa-truck"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h4>Curso CAP</h4>
-                                    <p>Certificado Aptitud Profesional</p>
-                                </div>
-                                <span class="service-status active">✅ ACTIVO</span>
-                            </a>
-                            
-                            <div class="service-card pending">
-                                <div class="service-icon">
-                                    <i class="fas fa-passport"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h4>Nacionalidad Española</h4>
-                                    <p>Proceso de naturalización</p>
-                                </div>
-                                <span class="service-status pending">🔄 PENDIENTE</span>
-                            </div>
-                            
-                            <div class="service-card pending">
-                                <div class="service-icon">
-                                    <i class="fas fa-id-card"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h4>Residencia y Permisos</h4>
-                                    <p>Autorizaciones de residencia</p>
-                                </div>
-                                <span class="service-status pending">🔄 PENDIENTE</span>
-                            </div>
-                            
-                            <div class="service-card pending">
-                                <div class="service-icon">
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h4>Arraigo</h4>
-                                    <p>Social, Familiar, Laboral</p>
-                                </div>
-                                <span class="service-status pending">🔄 PENDIENTE</span>
-                            </div>
-                            
-                            <div class="service-card pending">
-                                <div class="service-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h4>Asilo Político</h4>
-                                    <p>Protección internacional</p>
-                                </div>
-                                <span class="service-status pending">🔄 PENDIENTE</span>
-                            </div>
-                            
-                            <div class="service-card pending">
-                                <div class="service-icon">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h4>Trámites Específicos</h4>
-                                    <p>Gestiones particulares</p>
-                                </div>
-                                <span class="service-status pending">🔄 PENDIENTE</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Other Countries - Expansion Plans -->
-                    <div class="expansion-countries">
-                        <!-- Portugal -->
-                        <div class="country-panel portugal-panel pending">
-                            <div class="country-header">
-                                <div class="country-info">
-                                    <span class="flag">🇵🇹</span>
-                                    <div class="country-details">
-                                        <h3>PORTUGAL</h3>
-                                        <span class="country-status pending">Pendiente</span>
-                                    </div>
-                                </div>
-                                <div class="country-progress">
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 0%"></div>
-                                    </div>
-                                    <span class="progress-text">0/5 Activo</span>
-                                </div>
-                            </div>
-                            
-                            <div class="services-grid">
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-passport"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Ciudadanía Portuguesa</h4>
-                                        <p>Proceso de naturalización</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-id-card"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Autorización de Residencia</h4>
-                                        <p>Permisos de residencia temporal y permanente</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-briefcase"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Visa de Trabajo</h4>
-                                        <p>Autorización para trabajar en Portugal</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Visa de Estudiante</h4>
-                                        <p>Permisos para estudios superiores</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-home"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Reagrupación Familiar</h4>
-                                        <p>Reunificación con familiares</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- USA -->
-                        <div class="country-panel usa-panel pending">
-                            <div class="country-header">
-                                <div class="country-info">
-                                    <span class="flag">🇺🇸</span>
-                                    <div class="country-details">
-                                        <h3>ESTADOS UNIDOS</h3>
-                                        <span class="country-status pending">Pendiente</span>
-                                    </div>
-                                </div>
-                                <div class="country-progress">
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 0%"></div>
-                                    </div>
-                                    <span class="progress-text">0/4 Activo</span>
-                                </div>
-                            </div>
-                            
-                            <div class="services-grid">
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-plane"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Visas de Inmigrante</h4>
-                                        <p>Green Card y residencia permanente</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-plane-departure"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Visas de No Inmigrante</h4>
-                                        <p>H1B, L1, O1, turismo y negocios</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-briefcase"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Permisos de Trabajo</h4>
-                                        <p>EAD y autorizaciones laborales</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-file-signature"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Waivers y TPS</h4>
-                                        <p>Perdones migratorios y protección temporal</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Dubai -->
-                        <div class="country-panel dubai-panel pending">
-                            <div class="country-header">
-                                <div class="country-info">
-                                    <span class="flag">🇦🇪</span>
-                                    <div class="country-details">
-                                        <h3>DUBÁI</h3>
-                                        <span class="country-status pending">Pendiente</span>
-                                    </div>
-                                </div>
-                                <div class="country-progress">
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 0%"></div>
-                                    </div>
-                                    <span class="progress-text">0/2 Activo</span>
-                                </div>
-                            </div>
-                            
-                            <div class="services-grid">
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-crown"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Residencia Dorada</h4>
-                                        <p>Golden Visa de 5 y 10 años</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                                
-                                <div class="service-card pending">
-                                    <div class="service-icon">
-                                        <i class="fas fa-handshake"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h4>Asesoría General</h4>
-                                        <p>Consultoría integral para EAU</p>
-                                    </div>
-                                    <span class="service-status pending">🔄 PENDIENTE</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- Portugal -->
+                <div class="preview-card portugal">
+                    <div class="card-icon">🇵🇹</div>
+                    <h3>Portugal</h3>
+                    <p>Visas D7, Ciudadanía y Residencias.</p>
                 </div>
-            </section>
-            
-            <!-- Platform Components - Secondary -->
-            <section class="dashboard-section secondary">
-                <div class="section-header">
-                    <h2><i class="fas fa-cogs"></i> Componentes de la Plataforma</h2>
-                    <p>Infraestructura y herramientas de soporte</p>
+
+                <!-- USA -->
+                <div class="preview-card usa">
+                    <div class="card-icon">🇺🇸</div>
+                    <h3>Estados Unidos</h3>
+                    <p>Green Card, Visas de Trabajo y Turismo.</p>
                 </div>
-                
-                <div class="components-grid">
-                    <div class="component-card">
-                        <div class="component-header">
-                            <i class="fas fa-route"></i>
-                            <h3>Sistema de Procesos</h3>
-                        </div>
-                        <div class="component-items">
-                            <div class="component-item pending">
-                                <span class="item-name">Consulta Inicial</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                            <div class="component-item pending">
-                                <span class="item-name">Asesoría Personalizada</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                            <div class="component-item pending">
-                                <span class="item-name">Gestión de Trámites</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="component-card">
-                        <div class="component-header">
-                            <i class="fas fa-book-open"></i>
-                            <h3>Centro de Recursos</h3>
-                        </div>
-                        <div class="component-items">
-                            <div class="component-item pending">
-                                <span class="item-name">Blog y Noticias</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                            <div class="component-item pending">
-                                <span class="item-name">Guías Descargables</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                            <div class="component-item pending">
-                                <span class="item-name">Casos de Éxito</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="component-card">
-                        <div class="component-header">
-                            <i class="fas fa-users"></i>
-                            <h3>Información Corporativa</h3>
-                        </div>
-                        <div class="component-items">
-                            <div class="component-item pending">
-                                <span class="item-name">Milagros Mena Mata</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                            <div class="component-item pending">
-                                <span class="item-name">Equipo de Abogados</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                            <div class="component-item pending">
-                                <span class="item-name">Oficinas</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="component-card">
-                        <div class="component-header">
-                            <i class="fas fa-phone"></i>
-                            <h3>Canales de Contacto</h3>
-                        </div>
-                        <div class="component-items">
-                            <div class="component-item pending">
-                                <span class="item-name">Agendar Cita</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                            <a href="https://wa.me/34682518339" class="component-item active" target="_blank">
-                                <span class="item-name">WhatsApp Directo</span>
-                                <span class="item-status">✅ ACTIVO</span>
-                            </a>
-                            <div class="component-item pending">
-                                <span class="item-name">Consulta Online</span>
-                                <span class="item-status">🔄 PENDIENTE</span>
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- Venezuela -->
+                <div class="preview-card venezuela">
+                    <div class="card-icon">🇻🇪</div>
+                    <h3>Venezuela</h3>
+                    <p>Pasaportes, Apostillas y Legalizaciones.</p>
                 </div>
-            </section>
+
+                <!-- Dubai -->
+                <div class="preview-card dubai">
+                    <div class="card-icon">🇦🇪</div>
+                    <h3>Dubái</h3>
+                    <p>Golden Visa y Residencia.</p>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
-
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Contact Banner -->
+    <section class="contact-banner">
         <div class="container">
-            <p>&copy; 2024 Asesoría para Inmigrantes - Panel de Administración</p>
-            <p>Gestión interna de servicios de inmigración</p>
+            <div class="banner-content">
+                <h2>¿Necesitas asesoría personalizada?</h2>
+                <p>Nuestro equipo de expertos está listo para ayudarte en cada paso.</p>
+                <a href="https://wa.me/34682518339" target="_blank" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <div class="container">
+            <p>&copy; 2024 Asesoría para Inmigrantes. Abog. Milagros Mena.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="src/js/components/Navbar.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,1756 @@
+<!-- ============================================
+     CÓDIGO PARA ELEMENTOR - CURSO CAP
+     INSTRUCCIONES:
+     1. Copia TODO este código
+     2. En Elementor, arrastra un widget "HTML"
+     3. Pega este código completo
+     4. Publica
+     ============================================ -->
+
+<!-- Google Fonts - Fuente Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome 6 - Necesario para los iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+<!-- CSS -->
+<style>
+/* ============================================
+   RESET Y VARIABLES (Sin cambios aquí)
+   ============================================ */
+#curso-cap-wrapper {
+    --brand-action: #BC2527;
+    --brand-accent: #F7AF32;
+    --brand-background: #FFFFFF;
+    --red-700: #B91C1C;
+    --amber-100: #FEF3C7;
+    --amber-200: #FDE68A;
+    --amber-300: #FCD34D;
+    --amber-600: #D97706;
+    --slate-50: #F8FAFC;
+    --slate-200: #E2E8F0;
+    --slate-800: #1E293B;
+    --success-light: #D1FAE5;
+    --success: #10B981;
+    --success-dark: #047857;
+    --warning-light: #FEF3C7;
+    --warning: #F59E0B;
+    --warning-dark: #D97706;
+    --info-light: #DBEAFE;
+    --info: #3B82F6;
+    --info-dark: #1D4ED8;
+    line-height: 1.6;
+    color: var(--slate-800);
+    background-color: var(--brand-background);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+}
+
+#curso-cap-wrapper * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    box-sizing: border-box;
+}
+
+#curso-cap-wrapper .cap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   CAMBIOS PRINCIPALES ABAJO
+   ============================================ */
+
+/* APUNTAMOS A SVG EN LUGAR DE i */
+/* y usamos width/height en vez de font-size */
+
+/* ============================================
+   RESTO DEL CSS (Sin cambios, pero incluido para que copies todo el bloque)
+   ============================================ */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+#curso-cap-wrapper .cap-hero {
+    background: linear-gradient(-35deg,
+        var(--amber-200) 0%,
+        var(--brand-accent) 20%,
+        var(--amber-600) 50%,
+        var(--brand-accent) 80%,
+        var(--amber-300) 100%);
+    background-size: 500% 500%;
+    animation: cap-gradient-shift 8s ease-in-out infinite;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Imagen de fondo con opacidad baja */
+#curso-cap-wrapper .cap-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://asesoriaparainmigrantes.com/wp-content/uploads/2025/09/course_cap_header.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+/* Asegurar que el contenido esté sobre la imagen */
+#curso-cap-wrapper .cap-hero .cap-container {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes cap-gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#curso-cap-wrapper .cap-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+    color: white;
+}
+
+#curso-cap-wrapper .cap-hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#curso-cap-wrapper .cap-video-container {
+    margin-top: 40px;
+}
+
+#curso-cap-wrapper .cap-video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#curso-cap-wrapper .cap-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#curso-cap-wrapper .cap-video-meta {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    color: white;
+    opacity: 0.85;
+    font-size: 0.9rem;
+}
+
+#curso-cap-wrapper .cap-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--brand-action);
+    color: white !important;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(188, 37, 39, 0.3);
+    margin-top: 1.875rem;
+    border: none;
+    cursor: pointer;
+}
+
+#curso-cap-wrapper .cap-cta-button:hover {
+    background: var(--red-700);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(188, 37, 39, 0.4);
+    text-decoration: none !important;
+    color: white !important;
+}
+
+/* ============================================
+   SECCIONES DE CONTENIDO
+   ============================================ */
+#curso-cap-wrapper .cap-section {
+    padding: 80px 0;
+}
+
+#curso-cap-wrapper .cap-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3.75rem;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+#curso-cap-wrapper .cap-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+#curso-cap-wrapper .cap-main-info {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#curso-cap-wrapper .cap-main-info h3 {
+    font-size: 1.5rem;
+    color: var(--brand-action);
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+}
+
+#curso-cap-wrapper .cap-main-info p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+#curso-cap-wrapper .cap-highlight-box {
+    background: var(--success-light);
+    border-left: 4px solid var(--success);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 40px 0;
+}
+
+#curso-cap-wrapper .cap-highlight-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--success-dark);
+    display: block;
+    margin-bottom: 0.625rem;
+}
+
+#curso-cap-wrapper .cap-course-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#curso-cap-wrapper .cap-detail-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#curso-cap-wrapper .cap-detail-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+#curso-cap-wrapper .cap-detail-item svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--brand-action);
+    margin-right: 1.25rem;
+    min-width: 3.125rem;
+    flex-shrink: 0;
+}
+
+#curso-cap-wrapper .cap-detail-item h4 {
+    font-size: 1.1rem;
+    color: #1e293b;
+    margin-bottom: 0.3125rem;
+    font-weight: 600;
+}
+
+#curso-cap-wrapper .cap-detail-item p {
+    color: #64748b;
+    margin: 0;
+}
+
+/* ============================================
+   VENTAJAS
+   ============================================ */
+#curso-cap-wrapper .cap-advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+#curso-cap-wrapper .cap-advantage-card {
+    text-align: center;
+    padding: 40px 30px;
+    background: #f8fafc;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+#curso-cap-wrapper .cap-advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+#curso-cap-wrapper .cap-advantage-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--brand-action), var(--red-700));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+#curso-cap-wrapper .cap-advantage-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+}
+
+#curso-cap-wrapper .cap-advantage-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.9375rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+#curso-cap-wrapper .cap-advantage-card p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* ============================================
+   PRECIOS
+   ============================================ */
+#curso-cap-wrapper .cap-pricing-section {
+    background: var(--slate-50);
+}
+
+#curso-cap-wrapper .cap-important-note {
+    background: var(--info-light);
+    border: 1px solid var(--info);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#curso-cap-wrapper .cap-important-note svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--info);
+    flex-shrink: 0;
+}
+
+#curso-cap-wrapper .cap-important-note p {
+    margin: 0;
+    color: var(--info-dark);
+}
+
+#curso-cap-wrapper .cap-packages-grid {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+#curso-cap-wrapper .cap-package-card {
+    background: white;
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--slate-200);
+}
+
+#curso-cap-wrapper .cap-package-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+#curso-cap-wrapper .cap-package-header {
+    background: white;
+    padding: 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--slate-200);
+}
+
+#curso-cap-wrapper .cap-package-header h3 {
+    font-size: 1.8rem;
+    color: var(--slate-900);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#curso-cap-wrapper .cap-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--brand-action);
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#curso-cap-wrapper .cap-price::before {
+    content: '€';
+    font-size: 1.5rem;
+    opacity: 0.8;
+    margin-right: 4px;
+}
+
+/* Price Breakdown Cards */
+#curso-cap-wrapper .cap-price-breakdown-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 30px 40px;
+    background: var(--slate-50);
+    border-bottom: 1px solid var(--slate-200);
+}
+
+#curso-cap-wrapper .cap-breakdown-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid var(--slate-200);
+    transition: all 0.2s ease;
+}
+
+#curso-cap-wrapper .cap-breakdown-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#curso-cap-wrapper .cap-breakdown-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--brand-action);
+    margin-bottom: 10px;
+}
+
+#curso-cap-wrapper .cap-breakdown-price::before {
+    content: '€';
+    font-size: 1.3rem;
+    opacity: 0.8;
+    margin-right: 4px;
+}
+
+#curso-cap-wrapper .cap-breakdown-description {
+    color: var(--slate-700);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Payment Schedule Header */
+#curso-cap-wrapper .cap-payment-schedule-header {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#curso-cap-wrapper .cap-payment-schedule-header h4 {
+    color: var(--slate-900);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+#curso-cap-wrapper .cap-payment-schedule-header svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    color: var(--brand-action);
+}
+
+/* Payment Cards - Minimalist Style */
+#curso-cap-wrapper .cap-payment-card {
+    background: var(--slate-50);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--slate-200);
+    transition: all 0.2s ease;
+}
+
+#curso-cap-wrapper .cap-payment-card:hover {
+    border-color: var(--slate-300);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#curso-cap-wrapper .cap-payment-percentage {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--slate-700);
+    margin-bottom: 8px;
+}
+
+#curso-cap-wrapper .cap-payment-description {
+    color: var(--slate-600);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* Responsive: 3 columns for payment schedule on larger screens */
+@media (min-width: 768px) {
+    #curso-cap-wrapper .cap-price-breakdown-cards {
+        grid-template-columns: repeat(6, 1fr);
+        align-items: center;
+    }
+    
+    /* Breakdown cards centered - occupy middle 4 columns */
+    #curso-cap-wrapper .cap-price-breakdown-cards .cap-breakdown-card:nth-child(1) {
+        grid-column: 2 / 4;
+    }
+    
+    #curso-cap-wrapper .cap-price-breakdown-cards .cap-breakdown-card:nth-child(2) {
+        grid-column: 4 / 6;
+    }
+    
+    /* Payment schedule header spans all columns */
+    #curso-cap-wrapper .cap-payment-schedule-header {
+        grid-column: 1 / -1;
+    }
+    
+    /* Payment cards in 3 equal columns */
+    #curso-cap-wrapper .cap-price-breakdown-cards .cap-payment-card {
+        grid-column: span 2;
+    }
+}
+
+/* Services Cards Grid */
+#curso-cap-wrapper .cap-services-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+#curso-cap-wrapper .cap-service-detail-card {
+    background: white;
+    border-bottom: 1px solid var(--slate-200);
+}
+
+#curso-cap-wrapper .cap-service-detail-card:first-child {
+    border-right: 1px solid var(--slate-200);
+}
+
+#curso-cap-wrapper .cap-service-card-title {
+    font-weight: 600;
+    color: var(--slate-900);
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 1.1rem;
+    background: var(--slate-50);
+    border-bottom: 1px solid var(--slate-200);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#curso-cap-wrapper .cap-service-card-title svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--brand-action);
+}
+
+#curso-cap-wrapper .cap-service-card-features {
+    list-style: none;
+    padding: 25px 30px;
+    margin: 0;
+    background: white;
+}
+
+#curso-cap-wrapper .cap-service-card-features li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding: 12px 0;
+    color: var(--slate-700);
+    line-height: 1.6;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+#curso-cap-wrapper .cap-service-card-features li:last-child {
+    border-bottom: none;
+}
+
+#curso-cap-wrapper .cap-service-card-features li:hover {
+    color: var(--slate-900);
+    transform: translateX(2px);
+}
+
+#curso-cap-wrapper .cap-service-card-features svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--success);
+    margin-right: 12px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* Payment Schedule Section within Service Card */
+#curso-cap-wrapper .cap-payment-schedule-section {
+    border-top: 1px solid var(--slate-200);
+    margin-top: 0;
+}
+
+#curso-cap-wrapper .cap-payment-schedule-section .cap-service-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#curso-cap-wrapper .cap-payment-percent {
+    display: inline-block;
+    background: var(--brand-action);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+#curso-cap-wrapper .cap-payment-percent::before {
+    content: '€';
+    margin-right: 3px;
+}
+
+#curso-cap-wrapper .cap-package-note {
+    margin: 0;
+    padding: 20px 40px;
+    background: var(--amber-50);
+    border-top: 1px solid var(--amber-200);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#curso-cap-wrapper .cap-package-note svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--amber-600);
+}
+
+#curso-cap-wrapper .cap-package-note small {
+    color: var(--amber-800);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Services Included */
+#curso-cap-wrapper .cap-services-included {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#curso-cap-wrapper .cap-services-included h3 {
+    font-size: 1.5rem;
+    color: #1e293b;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#curso-cap-wrapper .cap-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+#curso-cap-wrapper .cap-service-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+#curso-cap-wrapper .cap-service-item:hover {
+    background: #e2e8f0;
+}
+
+#curso-cap-wrapper .cap-service-item svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: #3b82f6;
+    margin-right: 15px;
+    min-width: 20px;
+}
+
+/* ============================================
+   TESTIMONIOS
+   ============================================ */
+#curso-cap-wrapper .cap-testimonials-carousel {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -20px;
+}
+
+#curso-cap-wrapper .cap-testimonial-track {
+    display: flex;
+    gap: 30px;
+    animation: cap-scroll-testimonials 30s linear infinite;
+    width: fit-content;
+}
+
+#curso-cap-wrapper .cap-testimonial-card {
+    flex: 0 0 350px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#curso-cap-wrapper .cap-testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+#curso-cap-wrapper .cap-stars {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+#curso-cap-wrapper .cap-stars svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: #fbbf24;
+}
+
+#curso-cap-wrapper .cap-testimonial-card p {
+    font-style: italic;
+    color: #4b5563;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+@keyframes cap-scroll-testimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-350px * 6 - 180px)); }
+}
+
+#curso-cap-wrapper .cap-testimonials-carousel:hover .cap-testimonial-track {
+    animation-play-state: paused;
+}
+
+/* ============================================
+   FORMULARIO DE CONTACTO
+   ============================================ */
+#curso-cap-wrapper .cap-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f8fafc;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#curso-cap-wrapper .cap-form-group {
+    margin-bottom: 25px;
+}
+
+#curso-cap-wrapper .cap-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #374151;
+}
+
+#curso-cap-wrapper .cap-form-group input,
+#curso-cap-wrapper .cap-form-group select,
+#curso-cap-wrapper .cap-form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: white;
+}
+
+#curso-cap-wrapper .cap-form-group input:focus,
+#curso-cap-wrapper .cap-form-group select:focus,
+#curso-cap-wrapper .cap-form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+#curso-cap-wrapper .cap-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--brand-action), var(--red-700));
+    color: white !important;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+}
+
+#curso-cap-wrapper .cap-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(188, 37, 39, 0.3);
+}
+
+/* ============================================
+   MÉTODOS DE CONTACTO
+   ============================================ */
+#curso-cap-wrapper .cap-contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#curso-cap-wrapper .cap-contact-method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 12px;
+    text-decoration: none !important;
+    color: #374151 !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#curso-cap-wrapper .cap-contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-decoration: none !important;
+    color: #374151 !important;
+}
+
+#curso-cap-wrapper .cap-contact-method svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0.9375rem;
+    color: var(--brand-action);
+}
+
+/* Para los botones, mantenemos i pero añadimos svg también por si acaso */
+#curso-cap-wrapper .cap-cta-button i,
+#curso-cap-wrapper .cap-cta-button svg,
+#curso-cap-wrapper .cap-submit-btn i,
+#curso-cap-wrapper .cap-submit-btn svg,
+#curso-cap-wrapper .cap-download-btn i,
+#curso-cap-wrapper .cap-download-btn svg {
+    width: 1em;
+    height: 1em;
+}
+
+#curso-cap-wrapper .cap-contact-method span {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#curso-cap-wrapper .cap-contact-method small {
+    color: #6b7280;
+    text-align: center;
+}
+
+/* ============================================
+   DESCARGA DE RECURSOS
+   ============================================ */
+#curso-cap-wrapper .cap-download-section {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+}
+
+#curso-cap-wrapper .cap-download-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+#curso-cap-wrapper .cap-download-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.9375rem;
+    color: white;
+}
+
+#curso-cap-wrapper .cap-download-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 31.25rem;
+}
+
+#curso-cap-wrapper .cap-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--brand-action);
+    color: white !important;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(188, 37, 39, 0.3);
+    white-space: nowrap;
+}
+
+#curso-cap-wrapper .cap-download-btn:hover {
+    background: var(--red-700);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(188, 37, 39, 0.3);
+    text-decoration: none !important;
+    color: white !important;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    #curso-cap-wrapper {
+        font-size: 0.9375rem; /* 15px base en tablets */
+    }
+
+    #curso-cap-wrapper .cap-hero {
+        padding: 3.75rem 0;
+    }
+
+    #curso-cap-wrapper .cap-hero h1 {
+        font-size: 2rem;
+    }
+
+    #curso-cap-wrapper .cap-hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    #curso-cap-wrapper .cap-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    #curso-cap-wrapper .cap-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #curso-cap-wrapper .cap-packages-grid {
+        padding: 0 10px;
+    }
+
+    #curso-cap-wrapper .cap-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #curso-cap-wrapper .cap-price {
+        font-size: 2.5rem;
+    }
+
+    #curso-cap-wrapper .cap-download-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #curso-cap-wrapper .cap-contact-methods {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #curso-cap-wrapper {
+        font-size: 0.875rem; /* 14px base en móviles */
+    }
+
+    #curso-cap-wrapper .cap-hero {
+        padding: 3rem 0;
+    }
+
+    #curso-cap-wrapper .cap-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    #curso-cap-wrapper .cap-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    #curso-cap-wrapper .cap-cta-button {
+        font-size: 1rem;
+        padding: 0.875rem 1.5rem;
+    }
+
+    #curso-cap-wrapper .cap-section {
+        padding: 3.75rem 0;
+    }
+
+    #curso-cap-wrapper .cap-section h2 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    #curso-cap-wrapper .cap-main-info h3,
+    #curso-cap-wrapper .cap-highlight-text {
+        font-size: 1.25rem;
+    }
+
+    #curso-cap-wrapper .cap-detail-item h4 {
+        font-size: 1rem;
+    }
+
+    #curso-cap-wrapper .cap-detail-item svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    #curso-cap-wrapper .cap-advantage-card h3 {
+        font-size: 1.125rem;
+    }
+
+    #curso-cap-wrapper .cap-package-header {
+        padding: 30px 20px;
+    }
+
+    #curso-cap-wrapper .cap-package-header h3 {
+        font-size: 1.5rem;
+    }
+
+    #curso-cap-wrapper .cap-price {
+        font-size: 2.5rem;
+    }
+
+    #curso-cap-wrapper .cap-price::before {
+        font-size: 1.2rem;
+    }
+
+    #curso-cap-wrapper .cap-price-breakdown-cards {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    #curso-cap-wrapper .cap-breakdown-card {
+        padding: 20px 15px;
+    }
+
+    #curso-cap-wrapper .cap-breakdown-price {
+        font-size: 1.5rem;
+    }
+
+    #curso-cap-wrapper .cap-payment-schedule-header {
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    #curso-cap-wrapper .cap-payment-schedule-header h4 {
+        font-size: 1.1rem;
+    }
+
+    #curso-cap-wrapper .cap-payment-schedule-header svg {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    #curso-cap-wrapper .cap-payment-card {
+        padding: 18px 15px;
+    }
+
+    #curso-cap-wrapper .cap-payment-percentage {
+        font-size: 1.2rem;
+    }
+
+    #curso-cap-wrapper .cap-payment-description {
+        font-size: 0.85rem;
+    }
+
+    #curso-cap-wrapper .cap-services-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #curso-cap-wrapper .cap-service-detail-card:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--slate-200);
+    }
+
+    #curso-cap-wrapper .cap-service-card-title {
+        padding: 16px 20px;
+        font-size: 1rem;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    #curso-cap-wrapper .cap-service-card-title svg {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    #curso-cap-wrapper .cap-service-card-features {
+        padding: 20px;
+    }
+
+    #curso-cap-wrapper .cap-breakdown-description {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    #curso-cap-wrapper .cap-package-note {
+        padding: 16px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+    #curso-cap-wrapper .cap-services-included {
+        padding: 25px;
+    }
+
+    #curso-cap-wrapper .cap-download-content h2 {
+        font-size: 1.5rem;
+    }
+
+    #curso-cap-wrapper .cap-download-content p {
+        font-size: 1rem;
+    }
+
+    #curso-cap-wrapper .cap-contact-methods {
+        grid-template-columns: 1fr;
+    }
+
+    #curso-cap-wrapper .cap-contact-method svg {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+/* ============================================
+   ESTILO PARA SELECT DE PAÍSES
+   ============================================ */
+#curso-cap-wrapper #capCountrySelect {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#curso-cap-wrapper #capCountrySelect:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+</style>
+
+<!-- HTML CONTENT -->
+<div id="curso-cap-wrapper">
+    <!-- HERO SECTION -->
+    <section class="cap-hero">
+        <div class="cap-container">
+            <h1>Autorización de Estancia por Estudios con el Certificado de Aptitud Profesional (CAP)</h1>
+            <p class="cap-hero-subtitle">
+                Conviértete en conductor profesional en España con la ayuda de
+                <strong>Asesoría para Inmigrantes</strong> y accede a un mercado con alta demanda
+            </p>
+
+            <div class="cap-video-container">
+                <div class="cap-video-wrapper">
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/dMJU-foHMIc?si=TIcTaQU_LGQ2PfHK"
+                        title="Video explicativo del Curso CAP"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="cap-video-meta">
+                    <span><strong>Milagros Menas</strong></span>
+                    <span>18 de Septiembre, 2025</span>
+                </div>
+            </div>
+
+            <a href="#cap-form" class="cap-cta-button" id="capHeroCta">
+                <i class="fas fa-phone"></i>
+                Contáctanos Ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- INFORMACIÓN DEL CURSO -->
+    <section class="cap-section">
+        <div class="cap-container">
+            <h2>¿Qué es el Curso CAP y por qué es tu mejor oportunidad?</h2>
+
+            <div class="cap-info-grid">
+                <div class="cap-main-info">
+                    <h3>Certificado de Aptitud Profesional (CAP)</h3>
+                    <p>Es una certificación oficial y obligatoria en España para ser conductor profesional de vehículos de transporte de mercancías o de viajeros.</p>
+
+                    <div class="cap-highlight-box">
+                        <span class="cap-highlight-text">¡Tu oportunidad única!</span>
+                        <p><strong>España necesita más de 50.000 conductores profesionales</strong>, y este curso es tu puerta de entrada directa al mercado laboral.</p>
+                    </div>
+                </div>
+
+                <div class="cap-course-details">
+                    <div class="cap-detail-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Duración de la gestión</h4>
+                            <p>6 meses de acompañamiento integral</p>
+                        </div>
+                    </div>
+
+                    <div class="cap-detail-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <div>
+                            <h4>Modalidad del curso</h4>
+                            <p>100% Presencial en España</p>
+                        </div>
+                    </div>
+
+                    <div class="cap-detail-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h4>Validez</h4>
+                            <p>Certificación oficial reconocida en toda la Unión Europea</p>
+                        </div>
+                    </div>
+
+                    <div class="cap-detail-item">
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <h4>Renovación</h4>
+                            <p>El certificado debe renovarse cada 5 años</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENTAJAS -->
+    <section class="cap-section">
+        <div class="cap-container">
+            <h2>Ventajas Clave de Realizar el CAP con Nosotros</h2>
+
+            <div class="cap-advantages-grid">
+                <div class="cap-advantage-card">
+                    <div class="cap-advantage-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Acceso Laboral Directo</h3>
+                    <p>Incorpórate de inmediato al mercado laboral con una tasa de empleabilidad del <strong>95%</strong></p>
+                </div>
+
+                <div class="cap-advantage-card">
+                    <div class="cap-advantage-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Residencia Legal por Estudios</h3>
+                    <p>Consigue una vía legal para residir en España mientras completas tu formación</p>
+                </div>
+
+                <div class="cap-advantage-card">
+                    <div class="cap-advantage-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Bolsa de Empleo</h3>
+                    <p>Accede a empresas colaboradoras buscando perfiles como el tuyo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="cap-section cap-pricing-section">
+        <div class="cap-container">
+            <h2>Plan Diseñado para tu Éxito</h2>
+
+            <div class="cap-important-note">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>Requisito económico:</strong> Deberás acreditar ante la oficina de extranjería un certificado bancario español con un saldo mínimo de <strong>€3.200</strong>.</p>
+            </div>
+
+            <div class="cap-packages-grid">
+                <!-- Single Package -->
+                <div class="cap-package-card">
+                    <!-- Header with Price -->
+                    <div class="cap-package-header">
+                        <h3>Pack Curso CAP</h3>
+                        <div class="cap-price">3.900</div>
+                    </div>
+
+                    <!-- Price Breakdown Cards -->
+                    <div class="cap-price-breakdown-cards">
+                        <div class="cap-breakdown-card">
+                            <div class="cap-breakdown-price">1.600</div>
+                            <div class="cap-breakdown-description">Servicios legales del despacho</div>
+                        </div>
+                        <div class="cap-breakdown-card">
+                            <div class="cap-breakdown-price">2.300</div>
+                            <div class="cap-breakdown-description">Curso y alojamiento en el centro</div>
+                        </div>
+                        
+                        <!-- Payment Schedule Title -->
+                        <div class="cap-payment-schedule-header">
+                            <h4><i class="fas fa-calendar-alt"></i> Cronograma de Pago</h4>
+                        </div>
+                        
+                        <!-- Payment Schedule Cards -->
+                        <div class="cap-payment-card">
+                            <div class="cap-payment-percentage">50%</div>
+                            <div class="cap-payment-description">Al firmar el contrato de servicios</div>
+                        </div>
+                        <div class="cap-payment-card">
+                            <div class="cap-payment-percentage">25%</div>
+                            <div class="cap-payment-description">A tu llegada a España, antes de la presentación</div>
+                        </div>
+                        <div class="cap-payment-card">
+                            <div class="cap-payment-percentage">25%</div>
+                            <div class="cap-payment-description">Al recibir la respuesta de tu solicitud</div>
+                        </div>
+                    </div>
+
+                    <!-- Services Cards Grid -->
+                    <div class="cap-services-cards-grid">
+                        <!-- Law Firm Services Card -->
+                        <div class="cap-service-detail-card">
+                            <h4 class="cap-service-card-title"><i class="fas fa-gavel"></i> Servicios legales incluidos</h4>
+                            <ul class="cap-service-card-features">
+                                <li><i class="fas fa-check"></i> Gestión integral completa</li>
+                                <li><i class="fas fa-check"></i> Solicitud de Autorización de Estancia por Estudios</li>
+                                <li><i class="fas fa-check"></i> Certificado de Aptitud Profesional (CAP)</li>
+                                <li><i class="fas fa-check"></i> Apertura de cuenta bancaria española antes de llegar</li>
+                                <li><i class="fas fa-check"></i> Recurso de reposición en caso de denegación inicial</li>
+                                <li><i class="fas fa-check"></i> Canje del carnet de conducir (no incluye tasas administrativas)</li>
+                                <li><i class="fas fa-check"></i> Solicitud de permiso de trabajo parcial</li>
+                                <li><i class="fas fa-check"></i> Solicitud de modificación de estancia a cuenta ajena inicial: cuando haya culminado el estudio y tenga un contrato</li>
+                                <li><i class="fas fa-check"></i> Entrada directa a nuestra bolsa de empleo</li>
+                            </ul>
+                        </div>
+
+                        <!-- Study Center Services Card -->
+                        <div class="cap-service-detail-card">
+                            <h4 class="cap-service-card-title"><i class="fas fa-graduation-cap"></i> Formación y alojamiento incluidos</h4>
+                            <ul class="cap-service-card-features">
+                                <li><span class="cap-payment-percent">1.700</span> Curso completo de certificación</li>
+                                <li><span class="cap-payment-percent">600</span> Alojamiento y 2 comidas diarias (1 mes)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Important Note -->
+                    <div class="cap-package-note">
+                        <i class="fas fa-info-circle"></i>
+                        <small><strong>Incluido:</strong> Tasa de estancia por estudios. Las tasas administrativas adicionales no están incluidas.</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Services Included -->
+            <div class="cap-services-included">
+                <h3>Nuestra Gestión Integral Incluye:</h3>
+                <div class="cap-services-grid">
+                    <div class="cap-service-item">
+                        <i class="fas fa-user-check"></i>
+                        <span>Evaluación Inicial y Asesoramiento personalizado</span>
+                    </div>
+                    <div class="cap-service-item">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Preparación y revisión de toda la documentación</span>
+                    </div>
+                    <div class="cap-service-item">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Presentación de la solicitud ante las entidades correspondientes</span>
+                    </div>
+                    <div class="cap-service-item">
+                        <i class="fas fa-search"></i>
+                        <span>Seguimiento constante del estado de tu trámite</span>
+                    </div>
+                    <div class="cap-service-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Contacto con expertos para la gestión del seguro de salud</span>
+                    </div>
+                    <div class="cap-service-item">
+                        <i class="fas fa-university"></i>
+                        <span>Apertura de cuenta bancaria en banco físico dentro del territorio español</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="cap-section">
+        <div class="cap-container">
+            <h2>Lo que dicen nuestros clientes satisfechos</h2>
+            <div class="cap-testimonials-carousel">
+                <div class="cap-testimonial-track" id="capTestimonialTrack">
+                    <div class="cap-testimonial-card">
+                        <div class="cap-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Gracias a su asesoría obtuve mi CAP y ahora trabajo como conductor profesional. El proceso fue muy claro y me apoyaron en cada paso."</p>
+                        <strong>Carlos M.</strong> - Venezuela → Madrid
+                    </div>
+
+                    <div class="cap-testimonial-card">
+                        <div class="cap-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Excelente servicio. Me ayudaron con toda la documentación y conseguí trabajo inmediatamente después del curso. 100% recomendado."</p>
+                        <strong>María L.</strong> - Colombia → Barcelona
+                    </div>
+
+                    <div class="cap-testimonial-card">
+                        <div class="cap-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"El equipo es muy profesional. Me guiaron desde el inicio hasta conseguir mi permiso de trabajo. Ahora tengo estabilidad laboral en España."</p>
+                        <strong>José R.</strong> - Perú → Valencia
+                    </div>
+
+                    <div class="cap-testimonial-card">
+                        <div class="cap-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Increíble atención personalizada. Me resolvieron todas las dudas y el proceso fue mucho más rápido de lo esperado. ¡Gracias!"</p>
+                        <strong>Ana G.</strong> - Ecuador → Sevilla
+                    </div>
+
+                    <div class="cap-testimonial-card">
+                        <div class="cap-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Su bolsa de empleo es real. Terminé el CAP y a los pocos días ya tenía ofertas de trabajo. Muy satisfecho con el servicio."</p>
+                        <strong>Luis F.</strong> - Argentina → Málaga
+                    </div>
+
+                    <div class="cap-testimonial-card">
+                        <div class="cap-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Profesionales de primera. Me ayudaron no solo con el CAP sino con todos los trámites legales. Ahora vivo legalmente en España."</p>
+                        <strong>Patricia S.</strong> - Chile → Bilbao
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section class="cap-section" id="cap-form">
+        <div class="cap-container">
+            <h2>¿Listo para empezar tu futuro profesional en España?</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #64748b; margin-bottom: 50px;">
+                <strong>¡Los cupos son limitados!</strong> El próximo grupo inicia pronto. Rellena el formulario y te contactaremos.
+            </p>
+
+            <form class="cap-form-container" id="capContactForm">
+                <div class="cap-form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" name="fullName" required>
+                </div>
+
+                <div class="cap-form-group">
+                    <label>Correo Electrónico *</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="cap-form-group">
+                    <label>Número de WhatsApp *</label>
+                    <input type="tel" name="whatsapp" placeholder="+34 XXX XXX XXX" required>
+                </div>
+
+                <div class="cap-form-group">
+                    <label>País de Residencia Actual *</label>
+                    <select id="capCountrySelect" name="country" required>
+                        <option value="">Cargando países...</option>
+                    </select>
+                </div>
+
+                <div class="cap-form-group">
+                    <label>Mensaje (Opcional)</label>
+                    <textarea name="message" rows="4" placeholder="Cuéntanos sobre tu situación actual..."></textarea>
+                </div>
+
+                <button type="submit" class="cap-submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Solicitar Información Ahora
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="cap-section" style="background: #F8FAFC;">
+        <div class="cap-container">
+            <h2>También puedes encontrarnos aquí:</h2>
+
+            <div class="cap-contact-methods">
+                <a href="https://wa.me/34682518339" class="cap-contact-method" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                    <small>+34 682 51 83 39</small>
+                </a>
+
+                <a href="#" class="cap-contact-method" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                    <small>@asesoriaparainmigrantes</small>
+                </a>
+
+                <a href="#" class="cap-contact-method" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                    <small>@asesoriaparainmigrantes</small>
+                </a>
+
+                <a href="mailto:Admin@asesoriaparainmigrantes.com" class="cap-contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                    <small>Admin@asesoriaparainmigrantes.com</small>
+                </a>
+
+                <div class="cap-contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Oficina</span>
+                    <small>Calle de Galileo 70, Madrid</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESCARGA -->
+    <section class="cap-section cap-download-section">
+        <div class="cap-container">
+            <div class="cap-download-content">
+                <div>
+                    <h2>Guarda toda la información</h2>
+                    <p>Descarga la presentación completa en PDF con todos los detalles sobre el Curso CAP, los paquetes y el proceso de solicitud.</p>
+                </div>
+
+                <a href="#" class="cap-download-btn" id="capDownloadBtn">
+                    <i class="fas fa-download"></i>
+                    Descargar Presentación PDF
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+(function() {
+    'use strict';
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCursoCap);
+    } else {
+        initCursoCap();
+    }
+
+    function initCursoCap() {
+        // Cargar países desde la API
+        loadCountries();
+
+        // Formulario
+        const form = document.getElementById('capContactForm');
+        if (form) {
+            form.addEventListener('submit', handleFormSubmit);
+        }
+
+        // CTA Hero
+        const heroCta = document.getElementById('capHeroCta');
+        if (heroCta) {
+            heroCta.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('cap-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        // Download
+        const downloadBtn = document.getElementById('capDownloadBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', handleDownload);
+        }
+
+        // Duplicar testimonios para scroll infinito
+        const track = document.getElementById('capTestimonialTrack');
+        if (track) {
+            const content = track.innerHTML;
+            track.innerHTML = content + content;
+        }
+    }
+
+    // Nueva función para cargar países desde la API
+    function loadCountries() {
+        const select = document.getElementById('capCountrySelect');
+        if (!select) return;
+
+        // Mostrar mensaje de carga
+        select.innerHTML = '<option value="">Cargando países...</option>';
+
+        // Llamar a la API REST Countries
+        fetch('https://restcountries.com/v3.1/all?fields=name,translations')
+            .then(response => response.json())
+            .then(countries => {
+                // Ordenar países alfabéticamente por nombre en español
+                countries.sort((a, b) => {
+                    const nameA = a.translations?.spa?.common || a.name.common;
+                    const nameB = b.translations?.spa?.common || b.name.common;
+                    return nameA.localeCompare(nameB, 'es');
+                });
+
+                // Limpiar select y agregar opción por defecto
+                select.innerHTML = '<option value="">Selecciona tu país</option>';
+
+                // Agregar cada país
+                countries.forEach(country => {
+                    const option = document.createElement('option');
+                    const countryName = country.translations?.spa?.common || country.name.common;
+                    option.value = countryName;
+                    option.textContent = countryName;
+                    select.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar países:', error);
+                // En caso de error, cargar una lista básica
+                select.innerHTML = `
+                    <option value="">Selecciona tu país</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Perú">Perú</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="México">México</option>
+                    <option value="España">España</option>
+                    <option value="Otro">Otro</option>
+                `;
+            });
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = new FormData(form);
+
+        const fullName = data.get('fullName');
+        const email = data.get('email');
+        const whatsapp = data.get('whatsapp');
+        const country = data.get('country');
+        const message = data.get('message') || 'Sin mensaje adicional';
+
+        if (!fullName || !email || !whatsapp || !country) {
+            alert('Por favor completa todos los campos obligatorios.');
+            return;
+        }
+
+        const msg = `¡Hola! Me interesa el Curso CAP para obtener la Autorización de Estancia por Estudios.
+
+📋 *Mis datos:*
+• Nombre: ${fullName}
+• Email: ${email}
+• WhatsApp: ${whatsapp}
+• País de residencia: ${country}
+
+💬 *Mensaje adicional:*
+${message}
+
+Me gustaría recibir más información sobre los paquetes disponibles y agendar una evaluación inicial gratuita.
+
+¡Gracias!`;
+
+        const url = `https://wa.me/34682518339?text=${encodeURIComponent(msg)}`;
+        window.open(url, '_blank');
+
+        form.reset();
+        alert('¡Formulario enviado! Te redirigimos a WhatsApp para continuar la conversación.');
+    }
+
+    function handleDownload(e) {
+        e.preventDefault();
+        const msg = "Hola, me gustaría descargar la presentación completa del Curso CAP en PDF.";
+        const url = `https://wa.me/34682518339?text=${encodeURIComponent(msg)}`;
+        window.open(url, '_blank');
+    }
+})();
+</script>

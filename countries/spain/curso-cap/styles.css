@@ -430,7 +430,7 @@ body {
     line-height: 1.6;
 }
 
-/* Pricing Section */
+/* Pricing Section - Minimalist Design */
 .pricing {
     padding: 80px 0;
     background: var(--slate-50);
@@ -441,13 +441,6 @@ body {
     text-align: center;
     margin-bottom: 30px;
     color: #1e293b;
-}
-
-.pricing-intro {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #64748b;
-    margin-bottom: 40px;
 }
 
 .important-note {
@@ -472,80 +465,40 @@ body {
 }
 
 .packages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    display: flex;
+    justify-content: center;
     margin-bottom: 60px;
 }
 
 .package-card {
-    background: var(--brand-background);
+    background: white;
     border-radius: 16px;
-    padding: 40px;
+    padding: 0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    width: 100%;
+    overflow: hidden;
     border: 1px solid var(--slate-200);
 }
 
-.package-card.premium {
-    background: linear-gradient(45deg, var(--amber-100), var(--amber-50), var(--amber-100), var(--amber-50));
-    background-size: 400% 400%;
-    border: 3px solid var(--brand-action);
-    transform: scale(1.05);
-    animation: premiumShine 4s ease-in-out infinite;
-}
-
-.package-card.premium:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-@keyframes premiumShine {
-    0% {
-        background-position: 0% 0%;
-    }
-    25% {
-        background-position: 100% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    75% {
-        background-position: 0% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
 .package-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.package-badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--brand-action);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .package-header {
+    background: white;
+    padding: 40px;
     text-align: center;
-    margin-bottom: 30px;
+    border-bottom: 1px solid var(--slate-200);
 }
 
 .package-header h3 {
     font-size: 1.8rem;
-    color: #1e293b;
-    margin-bottom: 10px;
+    color: var(--slate-900);
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .price {
@@ -553,51 +506,245 @@ body {
     font-weight: 700;
     color: var(--brand-action);
     margin: 20px 0;
-}
-
-.package-subtitle {
-    font-weight: 600;
-    color: #1e293b;
-    margin-bottom: 20px;
-}
-
-.package-features {
-    list-style: none;
-}
-
-.package-features li {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    padding: 10px 0;
+    justify-content: center;
+    gap: 8px;
 }
 
-.package-features i {
-    color: #10b981;
-    margin-right: 15px;
-    font-size: 1.1rem;
+.price::before {
+    content: '€';
+    font-size: 1.5rem;
+    opacity: 0.8;
+    margin-right: 4px;
 }
 
-/* Package Notes */
-.package-note {
+/* Price Breakdown Cards */
+.price-breakdown-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 30px 40px;
+    background: var(--slate-50);
+    border-bottom: 1px solid var(--slate-200);
+}
+
+.payment-schedule-header {
+    grid-column: 1 / -1;
     margin-top: 20px;
-    padding: 15px;
-    background: var(--warning-light);
+    margin-bottom: 10px;
+}
+
+.payment-schedule-header h4 {
+    color: var(--slate-900);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.payment-schedule-header i {
+    color: var(--brand-action);
+    font-size: 1.3rem;
+}
+
+/* Responsive: 3 columns for payment schedule on larger screens */
+@media (min-width: 768px) {
+    .price-breakdown-cards {
+        grid-template-columns: repeat(6, 1fr);
+        align-items: center;
+    }
+    
+    /* Breakdown cards centered - occupy middle 4 columns */
+    .price-breakdown-cards .breakdown-card:nth-child(1) {
+        grid-column: 2 / 4;
+    }
+    
+    .price-breakdown-cards .breakdown-card:nth-child(2) {
+        grid-column: 4 / 6;
+    }
+    
+    /* Payment schedule header spans all columns */
+    .payment-schedule-header {
+        grid-column: 1 / -1;
+    }
+    
+    /* Payment cards in 3 equal columns */
+    .price-breakdown-cards .payment-card {
+        grid-column: span 2;
+    }
+}
+
+.breakdown-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid var(--slate-200);
+    transition: all 0.2s ease;
+}
+
+.breakdown-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.breakdown-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--brand-action);
+    margin-bottom: 10px;
+}
+
+.breakdown-price::before {
+    content: '€';
+    font-size: 1.3rem;
+    opacity: 0.8;
+    margin-right: 4px;
+}
+
+.breakdown-description {
+    color: var(--slate-700);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Payment Cards - Minimalist Style */
+.payment-card {
+    background: var(--slate-50);
     border-radius: 8px;
-    border-left: 4px solid var(--warning);
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--slate-200);
+    transition: all 0.2s ease;
+}
+
+.payment-card:hover {
+    border-color: var(--slate-300);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.payment-percentage {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--slate-700);
+    margin-bottom: 8px;
+}
+
+.payment-description {
+    color: var(--slate-600);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* Services Cards Grid */
+.services-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.service-detail-card {
+    background: white;
+    border-bottom: 1px solid var(--slate-200);
+}
+
+.service-detail-card:first-child {
+    border-right: 1px solid var(--slate-200);
+}
+
+.service-card-title {
+    font-weight: 600;
+    color: var(--slate-900);
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 1.1rem;
+    background: var(--slate-50);
+    border-bottom: 1px solid var(--slate-200);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.package-note i {
-    color: var(--warning);
+.service-card-title i {
+    color: var(--brand-action);
+    font-size: 1.2rem;
+}
+
+.service-card-features {
+    list-style: none;
+    padding: 25px 30px;
+    margin: 0;
+    background: white;
+}
+
+.service-card-features li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding: 12px 0;
+    color: var(--slate-700);
+    line-height: 1.6;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+.service-card-features li:last-child {
+    border-bottom: none;
+}
+
+.service-card-features li:hover {
+    color: var(--slate-900);
+    transform: translateX(2px);
+}
+
+.service-card-features i {
+    color: var(--success);
+    margin-right: 12px;
     font-size: 1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.payment-percent {
+    display: inline-block;
+    background: var(--brand-action);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.payment-percent::before {
+    content: '€';
+    margin-right: 3px;
+}
+
+.package-note {
+    margin: 0;
+    padding: 20px 40px;
+    background: var(--amber-50);
+    border-top: 1px solid var(--amber-200);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.package-note i {
+    color: var(--amber-600);
+    font-size: 1.2rem;
 }
 
 .package-note small {
-    color: var(--warning-dark);
+    color: var(--amber-800);
     margin: 0;
+    font-size: 0.95rem;
 }
 
 /* Services Included */
@@ -842,7 +989,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 20px;
+    padding: 30px 15px;
     background: white;
     border-radius: 12px;
     text-decoration: none;
@@ -879,6 +1026,10 @@ body {
 .contact-method small {
     color: #6b7280;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    font-size: 0.85rem;
 }
 
 /* Download Resources Section */
@@ -972,11 +1123,7 @@ body {
     }
     
     .packages-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .package-card.premium {
-        transform: none;
+        padding: 0 10px;
     }
     
     .services-grid {
@@ -1027,6 +1174,112 @@ body {
     .alternative-contact,
     .download-resources {
         padding: 60px 0;
+    }
+    
+    /* Pricing Mobile Styles - Minimalist */
+    .pricing h2 {
+        font-size: 2rem;
+    }
+    
+    .important-note {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+    }
+    
+    .packages-grid {
+        margin-bottom: 40px;
+    }
+    
+    .package-header {
+        padding: 30px 20px;
+    }
+    
+    .package-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+    }
+    
+    .price::before {
+        font-size: 1.2rem;
+    }
+    
+    .price-breakdown-cards {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .breakdown-card {
+        padding: 20px 15px;
+    }
+    
+    .breakdown-price {
+        font-size: 1.5rem;
+    }
+    
+    .breakdown-description {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    
+    .payment-schedule-header {
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    
+    .payment-schedule-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .payment-schedule-header i {
+        font-size: 1.1rem;
+    }
+    
+    .services-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-detail-card:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--slate-200);
+    }
+    
+    .service-card-title {
+        padding: 16px 20px;
+        font-size: 1rem;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    
+    .service-card-title i {
+        font-size: 1.1rem;
+    }
+    
+    .service-card-features {
+        padding: 20px;
+    }
+    
+    .payment-card {
+        padding: 18px 15px;
+    }
+    
+    .payment-percentage {
+        font-size: 1.2rem;
+    }
+    
+    .payment-description {
+        font-size: 0.85rem;
+    }
+    
+    .package-note {
+        padding: 16px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
     }
     
     .contact-methods {

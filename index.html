@@ -19,15 +19,37 @@
 
         .landing-hero {
             position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/placeholders/hero-bg-placeholder.jpg');
-            /* Placeholder image */
-            background-color: var(--slate-900);
-            /* Fallback */
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(-35deg,
+                    var(--amber-200) 0%,
+                    var(--brand-accent) 20%,
+                    var(--amber-600) 50%,
+                    var(--brand-accent) 80%,
+                    var(--amber-300) 100%);
+            background-size: 500% 500%;
+            animation: gradientShift 8s ease-in-out infinite;
             color: white;
             padding: 120px 0;
             text-align: center;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .landing-hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .landing-hero .hero-badge {
@@ -533,9 +555,9 @@
     <header class="landing-hero">
         <div class="container">
             <span class="hero-badge">Asesoría Legal Internacional</span>
-            <h1>Tu Pasaporte a una<br>Nueva Vida.</h1>
-            <p>Expertos en Inmigración y Extranjería. Te acompañamos paso a paso para vivir legalmente en España,
-                Portugal, USA y Dubái.</p>
+            <h1>Tu Futuro Legal<br>Comienza Aquí</h1>
+            <p>Expertos en Inmigración y Extranjería. Asesoría profesional para residencias, visados, nacionalidades y
+                trámites migratorios en múltiples países.</p>
             <div class="hero-actions">
                 <a href="https://wa.me/34682518339" target="_blank" class="cta-button">
                     Agendar Evaluación Gratuita <i class="fas fa-arrow-right"></i>

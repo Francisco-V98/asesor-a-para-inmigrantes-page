@@ -91,25 +91,15 @@ class GlobalNavbar {
             },
             {
                 label: 'Información Corporativa',
-                href: '#',
-                megaMenu: [
-                    {
-                        services: [
-                            { label: 'Abog. Milagros Mena', href: '#' },
-                            { label: 'Equipo de Abogados', href: '#' },
-                            { label: 'Oficinas', href: '#' }
-                        ]
-                    }
-                ]
+                href: `${this.rootPath}screens/general/informacion-corporativa/index.html`
             },
-            { label: 'Canales de Contacto', href: 'https://wa.me/34682518339' }
         ];
     }
 
     calculateRootPath() {
         const path = window.location.pathname;
         if (path.includes('/screens/countries/spain/curso-cap/')) return '../../../../';
-        if (path.includes('/screens/general/dashboard/')) return '../../../';
+        if (path.includes('/screens/general/')) return '../../../';
         if (path.includes('/screens/countries/')) return '../../../';
         return './';
     }

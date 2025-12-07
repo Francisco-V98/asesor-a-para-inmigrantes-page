@@ -755,6 +755,172 @@
             justify-content: center;
         }
 
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 0;
+            background: var(--slate-50);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--brand-action);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--brand-action);
+            box-shadow: 0 8px 30px rgba(188, 37, 39, 0.15);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--brand-action);
+            color: white;
+            padding: 5px 45px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 10px rgba(188, 37, 39, 0.3);
+            z-index: 10;
+        }
+
+        .pricing-header {
+            padding: 35px 30px 25px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--slate-50) 0%, white 100%);
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--slate-900);
+        }
+
+        .pricing-subtitle {
+            font-size: 0.95rem;
+            color: var(--slate-600);
+            margin: 0;
+        }
+
+        .pricing-price {
+            padding: 25px 30px;
+            text-align: center;
+            background: white;
+            border-top: 1px solid var(--slate-100);
+            border-bottom: 1px solid var(--slate-100);
+        }
+
+        .pricing-price .currency {
+            font-size: 1.3rem;
+            color: var(--brand-action);
+            font-weight: 700;
+            vertical-align: super;
+            margin-right: 2px;
+        }
+
+        .pricing-price .amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--brand-action);
+            line-height: 1;
+        }
+
+        .pricing-price .duration {
+            font-size: 0.9rem;
+            color: var(--slate-500);
+            margin: 8px 0 0 0;
+            font-weight: 500;
+        }
+
+        .pricing-features {
+            padding: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-item i {
+            color: var(--brand-action);
+            font-size: 1.1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--slate-700);
+        }
+
+        .feature-divider {
+            display: none;
+        }
+
+        .pricing-cta {
+            display: block;
+            background: var(--brand-action);
+            color: white;
+            text-align: center;
+            padding: 16px 30px;
+            margin: 0 30px 30px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(188, 37, 39, 0.3);
+        }
+
+        .pricing-cta:hover {
+            background: #991b1b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(188, 37, 39, 0.4);
+        }
+
+        .pricing-note {
+            padding: 0 30px 30px 30px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--slate-600);
+            margin: 0;
+            text-align: center;
+        }
+
+        .pricing-badge {
+            display: none;
+        }
+
         /* Responsive */
         /* New Services Layout Styles */
         .horizontal-card {
@@ -870,6 +1036,17 @@
             .blog-mockup {
                 min-height: 200px;
                 padding: 40px 30px;
+            }
+
+            /* Pricing Section Mobile */
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .pricing-badge {
+                font-size: 0.65rem;
+                padding: 4px 40px;
             }
         }
     </style>
@@ -1177,42 +1354,102 @@
         </div>
     </section>
 
-    <!-- Testimonials Section (Reused styles from main.css roughly, adapted structure) -->
-    <section class="testimonials" style="background: var(--slate-50); padding: 80px 0;">
+    <!-- Pricing Section -->
+    <section class="pricing-section">
         <div class="container">
             <div class="section-header">
-                <h2>Clientes Felices</h2>
-                <p>Historias reales de personas que ya viven su sueño.</p>
+                <h2>Nuestros Servicios de Asesoría</h2>
+                <p>Elige la modalidad que mejor se adapte a tus necesidades</p>
             </div>
 
-            <!-- Simple Grid for Testimonials -->
-            <div class="features-grid" style="margin-top: 40px;">
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="pricing-grid">
+                <!-- Card 1: Presencial -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Asesoría Presencial</h3>
+                        <p class="pricing-subtitle">Consulta sobre extranjería en persona</p>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Excelente atención. Me ayudaron con mi visado
-                        de estudiante en España y todo salió perfecto. Milagros es muy atenta."</p>
-                    <strong>- Sofia R. (Chile)</strong>
+                    <div class="pricing-price">
+                        <span class="currency">€</span>
+                        <span class="amount">80</span>
+                        <p class="duration">30 minutos</p>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Asesoría presencial descontada del coste de la solicitud</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Personalizada y especializada en cada cliente</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Paga con efectivo, débito, crédito o BIZUM</p>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="pricing-cta">Reservar Ahora</a>
+                    <p class="pricing-note">Desglosamos los distintos visados existentes en la Legislación Española
+                        junto con sus requisitos</p>
                 </div>
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                <!-- Card 2: Videollamada -->
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3>Asesoría por Videollamada</h3>
+                        <p class="pricing-subtitle">Consulta online desde cualquier lugar</p>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Logré mi Golden Visa en Dubai gracias a su
-                        equipo. El proceso fue rápido y transparente. 100% recomendados."</p>
-                    <strong>- Carlos M. (España)</strong>
+                    <div class="pricing-price">
+                        <span class="currency">€</span>
+                        <span class="amount">75</span>
+                        <p class="duration">30 minutos</p>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Asesoría por videollamada descontada del coste de la solicitud</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Personalizada y especializada en cada cliente</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Paga con débito, crédito o PayPal</p>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="pricing-cta">Reservar Ahora</a>
+                    <p class="pricing-note">Ideal para clientes internacionales o con agenda ocupada. Misma calidad
+                        profesional</p>
                 </div>
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                <!-- Card 3: Llamada Rápida -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Consulta Rápida</h3>
+                        <p class="pricing-subtitle">Orientación telefónica inmediata</p>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Resolvieron mi caso de nacionalidad española
-                        que estaba atascado años. Profesionalidad total."</p>
-                    <strong>- Laura V. (Venezuela)</strong>
+                    <div class="pricing-price">
+                        <span class="currency">€</span>
+                        <span class="amount">40</span>
+                        <p class="duration">15 minutos</p>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Consulta telefónica directa con expertos</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Respuestas rápidas a dudas migratorias</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Pago anticipado por transferencia o PayPal</p>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="pricing-cta">Reservar Ahora</a>
+                    <p class="pricing-note">Perfecto para consultas puntuales y orientación inicial sobre tu caso</p>
                 </div>
             </div>
         </div>
@@ -1340,23 +1577,42 @@
             </div>
         </div>
     </section>
-
-    <!-- Final CTA -->
-    <section class="contact-banner"
-        style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('assets/placeholders/hero-bg-placeholder.jpg'); background-color: var(--slate-900); padding: 80px 0; text-align: center; color: white; background-size: cover; background-position: center;">
+    <!-- Testimonials Section (Reused styles from main.css roughly, adapted structure) -->
+    <section class="testimonials" style="background: var(--slate-50); padding: 80px 0;">
         <div class="container">
-            <div class="banner-content">
-                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">¿Necesitas asesoría personalizada?</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Agenda una cita hoy mismo y deja tu
-                    caso en manos de expertos.</p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://wa.me/34682518339" target="_blank" class="cta-button">
-                        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
-                    </a>
-                    <a href="screens/general/dashboard/index.html" class="cta-button"
-                        style="background: transparent; border: 2px solid white;">
-                        Acceder al Área de Clientes
-                    </a>
+            <div class="section-header">
+                <h2>Clientes Felices</h2>
+                <p>Historias reales de personas que ya viven su sueño.</p>
+            </div>
+
+            <!-- Simple Grid for Testimonials -->
+            <div class="features-grid" style="margin-top: 40px;">
+                <div class="feature-card" style="background: white; text-align: left;">
+                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Excelente atención. Me ayudaron con mi visado
+                        de estudiante en España y todo salió perfecto. Milagros es muy atenta."</p>
+                    <strong>- Sofia R. (Chile)</strong>
+                </div>
+                <div class="feature-card" style="background: white; text-align: left;">
+                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Logré mi Golden Visa en Dubai gracias a su
+                        equipo. El proceso fue rápido y transparente. 100% recomendados."</p>
+                    <strong>- Carlos M. (España)</strong>
+                </div>
+                <div class="feature-card" style="background: white; text-align: left;">
+                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Resolvieron mi caso de nacionalidad española
+                        que estaba atascado años. Profesionalidad total."</p>
+                    <strong>- Laura V. (Venezuela)</strong>
                 </div>
             </div>
         </div>

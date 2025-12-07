@@ -668,6 +668,93 @@
             height: 100%;
         }
 
+        /* Blog Floating Card Section */
+        .blog-card-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .blog-floating-card {
+            background: linear-gradient(-35deg,
+                    var(--amber-200) 0%,
+                    var(--brand-accent) 20%,
+                    var(--amber-600) 50%,
+                    var(--brand-accent) 80%,
+                    var(--amber-300) 100%);
+            background-size: 500% 500%;
+            animation: gradientShift 8s ease-in-out infinite;
+            border-radius: 30px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card-content {
+            flex: 1;
+            color: white;
+            z-index: 2;
+        }
+
+        .blog-card-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .blog-card-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .blog-cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--brand-action);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-cta-button:hover {
+            background: var(--slate-100);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .blog-card-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .blog-mockup {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* Responsive */
         /* New Services Layout Styles */
         .horizontal-card {
@@ -767,6 +854,22 @@
 
             .map-container {
                 height: 250px;
+            }
+
+            /* Blog Card Mobile */
+            .blog-floating-card {
+                flex-direction: column;
+                padding: 40px 30px;
+                gap: 30px;
+            }
+
+            .blog-card-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .blog-mockup {
+                min-height: 200px;
+                padding: 40px 30px;
             }
         }
     </style>
@@ -1259,13 +1362,38 @@
         </div>
     </section>
 
+    <!-- Blog Floating Card -->
+    <section class="blog-card-section">
+        <div class="container">
+            <div class="blog-floating-card">
+                <div class="blog-card-content">
+                    <h2>Mantente informado sobre leyes migratorias, cambios en normativas y oportunidades</h2>
+                    <p>Accede a nuestro blog con artículos actualizados, guías prácticas y consejos de expertos para
+                        facilitar tu proceso migratorio en España, Portugal, USA y Dubái.</p>
+                    <a href="#blog" class="blog-cta-button">
+                        Explorar Blog y Recursos
+                    </a>
+                </div>
+                <div class="blog-card-image">
+                    <div class="blog-mockup">
+                        <i class="fas fa-newspaper" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
+                        <p style="margin-top: 20px; opacity: 0.5;">[ Imagen: Mockup de Blog/Noticias ]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div
                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
                 <div>
-                    <h4 style="color: white; margin-bottom: 20px;">Asesoría para Inmigrantes</h4>
+                    <div style="margin-bottom: 16px;">
+                        <img src="assets/icons/logo/logo-sm.png" alt="Asesoría para Inmigrantes"
+                            style="height: 96px; width: auto;">
+                    </div>
                     <p style="opacity: 0.7;">Expertos en derecho migratorio y extranjería. Soluciones legales para un
                         mundo sin fronteras.</p>
                 </div>

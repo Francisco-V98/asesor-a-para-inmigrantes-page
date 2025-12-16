@@ -11,6 +11,14 @@ class GlobalNavbar {
                 isWide: true, // Marker for full-width/wide alignment behavior
                 megaMenu: [
                     {
+                        country: 'Dubái',
+                        icon: '🇦🇪',
+                        services: [
+                            { label: 'Residencia Dorada', href: '#' },
+                            { label: 'Asesoría General', href: '#' }
+                        ]
+                    },
+                    {
                         country: 'España',
                         icon: '🇪🇸',
                         services: [
@@ -20,6 +28,16 @@ class GlobalNavbar {
                             { label: 'Arraigo Sociolaboral', href: '#' },
                             { label: 'Nómada Digital', href: '#' },
                             { label: 'Trámites Específicos', href: '#' }
+                        ]
+                    },
+                    {
+                        country: 'Estados Unidos',
+                        icon: '🇺🇸',
+                        services: [
+                            { label: 'Visas de Inmigrante', href: '#' },
+                            { label: 'Visas de No Inmigrante', href: '#' },
+                            { label: 'Permisos de Trabajo', href: '#' },
+                            { label: 'Waivers y TPS', href: '#' }
                         ]
                     },
                     {
@@ -34,16 +52,6 @@ class GlobalNavbar {
                         ]
                     },
                     {
-                        country: 'Estados Unidos',
-                        icon: '🇺🇸',
-                        services: [
-                            { label: 'Visas de Inmigrante', href: '#' },
-                            { label: 'Visas de No Inmigrante', href: '#' },
-                            { label: 'Permisos de Trabajo', href: '#' },
-                            { label: 'Waivers y TPS', href: '#' }
-                        ]
-                    },
-                    {
                         country: 'Venezuela',
                         icon: '🇻🇪',
                         services: [
@@ -51,14 +59,6 @@ class GlobalNavbar {
                             { label: 'Apostilla', href: '#' },
                             { label: 'Antecedentes Penales', href: '#' },
                             { label: 'Cédula de Identidad', href: '#' }
-                        ]
-                    },
-                    {
-                        country: 'Dubái',
-                        icon: '🇦🇪',
-                        services: [
-                            { label: 'Residencia Dorada', href: '#' },
-                            { label: 'Asesoría General', href: '#' }
                         ]
                     }
                 ]

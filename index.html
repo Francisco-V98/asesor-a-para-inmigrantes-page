@@ -14,23 +14,39 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Vanta.js Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+
     <style>
         /* Specific Landing Page Styles - Consolidate into main.css later if desired */
 
         .landing-hero {
             position: relative;
-            background: linear-gradient(-35deg,
-                    var(--amber-200) 0%,
-                    var(--brand-accent) 20%,
-                    var(--amber-600) 50%,
-                    var(--brand-accent) 80%,
-                    var(--amber-300) 100%);
-            background-size: 500% 500%;
-            animation: gradientShift 8s ease-in-out infinite;
-            color: white;
-            padding: 120px 0;
-            text-align: center;
+            background: var(--dark-950);
+            color: var(--gold-200);
+            padding: 100px 0;
             overflow: hidden;
+            border-bottom: 3px solid var(--brand-primary-gold);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Overlay gradient to enhance Vanta effect */
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                    rgba(10, 10, 15, 0.6) 0%,
+                    rgba(13, 13, 21, 0.4) 25%,
+                    rgba(26, 26, 46, 0.3) 50%,
+                    rgba(13, 13, 21, 0.4) 75%,
+                    rgba(10, 10, 15, 0.6) 100%);
+            pointer-events: none;
+            z-index: 1;
         }
 
         @keyframes gradientShift {
@@ -49,20 +65,32 @@
 
         .landing-hero .container {
             position: relative;
-            z-index: 2;
+            z-index: 10;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content-col {
+            text-align: left;
         }
 
         .landing-hero .hero-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(212, 175, 55, 0.15);
             backdrop-filter: blur(10px);
             padding: 8px 16px;
             border-radius: 30px;
             font-size: 0.9rem;
             margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: var(--gold-300);
         }
 
         .landing-hero h1 {
@@ -70,19 +98,134 @@
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.1;
+            color: var(--gold-400);
+            text-shadow: 0 2px 30px rgba(255, 215, 0, 0.4);
         }
 
         .landing-hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 0 40px 0;
             opacity: 0.9;
+            color: var(--dark-100);
+            line-height: 1.7;
+        }
+
+        .hero-video-col {
+            position: relative;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+            border: 3px solid var(--brand-primary-gold);
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--dark-800) 0%, var(--dark-700) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-300);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .video-placeholder i {
+            font-size: 5rem;
+            color: var(--brand-primary-gold);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .video-placeholder p {
+            font-size: 1.9rem;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            color: var(--gold-400);
+        }
+
+        .video-placeholder span {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            color: var(--dark-200);
         }
 
         /* Features Section */
         .features-section {
             padding: 80px 0;
-            background: white;
+            background: linear-gradient(135deg,
+                    var(--dark-900) 0%,
+                    var(--dark-800) 25%,
+                    var(--dark-950) 50%,
+                    var(--dark-800) 75%,
+                    var(--dark-900) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Dot pattern overlay */
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 2px 2px, rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Glowing accent lines */
+        .features-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--brand-primary-gold) 50%,
+                    transparent 100%);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .features-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         .features-grid {
@@ -96,50 +239,174 @@
             text-align: center;
             padding: 30px;
             border-radius: 20px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--dark-700);
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glow effect on hover */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-card:hover {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transform: translateY(-5px);
-            border-color: var(--slate-100);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--brand-primary-gold);
+            background: rgba(26, 26, 46, 0.8);
         }
 
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: var(--red-50);
-            color: var(--brand-action);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(255, 215, 0, 0.1) 100%);
+            color: var(--brand-primary-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin: 0 auto 20px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            border: 2px solid var(--gold-700);
+            position: relative;
+        }
+
+        /* Pulse animation on icon */
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            border: 2px solid var(--brand-primary-gold);
+            opacity: 0;
+            animation: pulse 2s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
         }
 
         .feature-card:hover .feature-icon {
-            background: var(--brand-action);
-            color: white;
+            background: linear-gradient(135deg, var(--brand-primary-gold) 0%, var(--gold-600) 100%);
+            color: var(--dark-900);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            border-color: var(--gold-400);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .feature-card h3 {
             font-size: 1.3rem;
-            color: var(--slate-800);
+            color: var(--gold-300);
             margin-bottom: 15px;
         }
 
         .feature-card p {
-            color: var(--slate-600);
+            color: var(--dark-200);
             line-height: 1.6;
         }
 
         /* Services Preview Section */
         .services-section {
             padding: 80px 0;
-            background: var(--slate-50);
+            background: linear-gradient(180deg,
+                    var(--dark-950) 0%,
+                    var(--dark-900) 50%,
+                    var(--dark-950) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated particles/stars background */
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(255, 215, 0, 0.2), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(212, 175, 55, 0.25), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(255, 215, 0, 0.3), transparent),
+                radial-gradient(2px 2px at 90% 60%, rgba(212, 175, 55, 0.2), transparent),
+                radial-gradient(1px 1px at 33% 80%, rgba(255, 215, 0, 0.25), transparent),
+                radial-gradient(1px 1px at 15% 90%, rgba(212, 175, 55, 0.2), transparent);
+            background-size: 200% 200%;
+            background-position: 0% 0%;
+            animation: sparkle 30s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                background-position: 0% 0%;
+                opacity: 0.5;
+            }
+
+            25% {
+                background-position: 100% 0%;
+                opacity: 0.7;
+            }
+
+            50% {
+                background-position: 100% 100%;
+                opacity: 0.6;
+            }
+
+            75% {
+                background-position: 0% 100%;
+                opacity: 0.8;
+            }
+        }
+
+        /* Gradient overlay for depth */
+        .services-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center,
+                    transparent 0%,
+                    rgba(10, 10, 15, 0.3) 100%);
+            pointer-events: none;
+        }
+
+        .services-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         .country-cards-grid {
@@ -149,27 +416,81 @@
         }
 
         .country-card {
-            background: white;
-            border-radius: 20px;
+            background: rgba(13, 13, 21, 0.5);
+            backdrop-filter: blur(15px) saturate(150%);
+            -webkit-backdrop-filter: blur(15px) saturate(150%);
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Animated border gradient - Ultra Subtle */
+        .country-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg,
+                    rgba(212, 175, 55, 0.08) 0%,
+                    rgba(255, 215, 0, 0.05) 50%,
+                    rgba(212, 175, 55, 0.08) 100%);
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .country-card:hover::before {
+            opacity: 1;
         }
 
         .country-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(13, 13, 21, 0.7);
+            transform: translateY(-15px) scale(1.02) rotateY(2deg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(212, 175, 55, 0.4),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+            border-color: rgba(212, 175, 55, 0.6);
         }
 
         .country-img-placeholder {
             height: 200px;
-            background-color: var(--slate-200);
+            background: linear-gradient(135deg,
+                    var(--dark-800) 0%,
+                    var(--dark-700) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--slate-400);
+            color: var(--dark-300);
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Shimmer effect on image placeholder */
+        .country-img-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(212, 175, 55, 0.2),
+                    transparent);
+            transition: left 0.6s;
+        }
+
+        .country-card:hover .country-img-placeholder::before {
+            left: 100%;
         }
 
         .country-content {
@@ -185,12 +506,27 @@
 
         .country-flag {
             font-size: 2.5rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+
+        .country-card:hover .country-flag {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
         }
 
         .country-title {
-            font-size: 1.5rem;
+            font-size: 1.9rem;
             font-weight: 700;
-            color: var(--slate-800);
+            color: var(--gold-300);
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .country-card:hover .country-title {
+            color: var(--gold-400);
+            text-shadow: 0 2px 20px rgba(255, 215, 0, 0.5);
         }
 
         .service-list-preview {
@@ -200,11 +536,18 @@
 
         .service-list-preview li {
             padding: 8px 0;
-            border-bottom: 1px solid var(--slate-100);
-            color: var(--slate-600);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--dark-200);
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .service-list-preview li:hover {
+            padding-left: 8px;
+            color: var(--gold-300);
+            border-bottom-color: rgba(212, 175, 55, 0.3);
         }
 
         .service-list-preview li:last-child {
@@ -212,33 +555,64 @@
         }
 
         .service-list-preview li i {
-            color: var(--success);
+            color: var(--gold-500);
             font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-list-preview li:hover i {
+            color: var(--gold-400);
+            transform: scale(1.2);
         }
 
         .country-link {
-            display: inline-block;
-            color: var(--brand-action);
-            font-weight: 600;
-            text-decoration: none;
-            transition: gap 0.2s ease;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            color: var(--brand-primary-gold);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .country-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--brand-primary-gold);
+            transition: width 0.3s ease;
         }
 
         .country-link:hover {
-            gap: 12px;
+            gap: 14px;
+            color: var(--gold-400);
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--brand-primary-gold);
+            transform: translateX(5px);
+        }
+
+        .country-link:hover::after {
+            width: 100%;
         }
 
         /* Promo CAP Section */
         .promo-cap {
-            background: linear-gradient(135deg, var(--brand-action) 0%, #991b1b 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 50%, var(--dark-950) 100%);
+            color: var(--gold-200);
             padding: 80px 0;
             border-radius: 0;
             position: relative;
             overflow: hidden;
+            border-top: 2px solid var(--brand-primary-gold);
+            border-bottom: 2px solid var(--brand-primary-gold);
         }
 
         .promo-content {
@@ -259,12 +633,13 @@
         .promo-text h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: white;
+            color: var(--gold-400);
+            text-shadow: 0 2px 20px rgba(255, 215, 0, 0.3);
         }
 
         .promo-tag {
-            background: var(--brand-accent);
-            color: var(--slate-900);
+            background: linear-gradient(135deg, var(--brand-primary-gold) 0%, var(--gold-600) 100%);
+            color: var(--dark-900);
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: 700;
@@ -272,24 +647,96 @@
             text-transform: uppercase;
             margin-bottom: 15px;
             display: inline-block;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
 
         .promo-image {
             flex: 1;
             min-width: 300px;
             height: 350px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(212, 175, 55, 0.05);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border: 2px dashed rgba(212, 175, 55, 0.3);
         }
 
         /* Featured Services Carousel Section */
         .featured-services-section {
             padding: 80px 0;
-            background: white;
+            background: linear-gradient(135deg,
+                    var(--dark-950) 0%,
+                    var(--dark-900) 25%,
+                    var(--dark-800) 50%,
+                    var(--dark-900) 75%,
+                    var(--dark-950) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated floating orbs background */
+        .featured-services-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            left: -100px;
+            animation: float1 20s infinite ease-in-out;
+            filter: blur(60px);
+        }
+
+        .featured-services-section::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            right: -150px;
+            animation: float2 25s infinite ease-in-out;
+            filter: blur(60px);
+        }
+
+        @keyframes float1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(200px, 100px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-50px, 200px) scale(0.9);
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(-150px, -100px) scale(1.15);
+            }
+
+            66% {
+                transform: translate(100px, -180px) scale(0.85);
+            }
+        }
+
+        .featured-services-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         .featured-carousel-wrapper {
@@ -302,16 +749,78 @@
             border-radius: 20px;
         }
 
-        /* Promo Card - Maintains exact same styling as promo-cap */
+        /* Promo Card - Glassmorphism Style */
         .promo-card {
             display: none;
-            background: linear-gradient(135deg, var(--brand-action) 0%, #991b1b 100%);
-            color: white;
-            padding: 80px;
-            border-radius: 20px;
+            background: rgba(10, 10, 15, 0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            color: var(--gold-200);
+            padding: 60px;
+            border-radius: 30px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                0 0 40px rgba(212, 175, 55, 0.15),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Glassmorphism shine effect */
+        .promo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            transition: left 0.6s;
+        }
+
+        .promo-card:hover::before {
+            left: 100%;
+        }
+
+        /* Inner glow border */
+        .promo-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 30px;
+            padding: 1px;
+            background: linear-gradient(135deg,
+                    rgba(212, 175, 55, 0.5) 0%,
+                    rgba(255, 215, 0, 0.2) 50%,
+                    rgba(212, 175, 55, 0.5) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .promo-card:hover::after {
+            opacity: 1;
+        }
+
+        .promo-card:hover {
+            background: rgba(13, 13, 21, 0.5);
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(212, 175, 55, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-5px) scale(1.01);
         }
 
         .promo-card.active {
@@ -336,9 +845,10 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgb(0, 0, 0);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgb(255, 255, 255);
+            background: rgba(10, 10, 15, 0.5);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -347,18 +857,20 @@
             justify-content: center;
             cursor: pointer;
             z-index: 10;
-            box-shadow: 0 6px 25px rgb(0, 0, 0);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                0 0 20px rgba(212, 175, 55, 0.1);
             transition: all 0.3s ease;
-            color: white;
+            color: var(--gold-300);
             font-size: 1.5rem;
         }
 
         .carousel-nav:hover {
-            background: var(--brand-action);
-            border-color: var(--brand-action);
-            color: white;
-            transform: translateY(-50%) scale(1.15);
-            box-shadow: 0 8px 30px rgba(188, 37, 39, 0.5);
+            background: rgba(212, 175, 55, 0.3);
+            border-color: var(--brand-primary-gold);
+            color: var(--gold-400);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.4);
         }
 
         .carousel-nav.prev {
@@ -386,24 +898,72 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--slate-300);
+            background: var(--dark-500);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .indicator.active {
-            background: var(--brand-action);
+            background: var(--brand-primary-gold);
             width: 30px;
             border-radius: 6px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
         .indicator:hover {
-            background: var(--slate-400);
+            background: var(--dark-400);
         }
 
         /* About Section */
         .sc-about {
             padding: 100px 0;
+            background: linear-gradient(135deg,
+                    var(--dark-950) 0%,
+                    var(--dark-900) 25%,
+                    var(--dark-800) 50%,
+                    var(--dark-900) 75%,
+                    var(--dark-950) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 25s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic mesh gradient background */
+        .sc-about::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 40%);
+            animation: meshMove 30s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes meshMove {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+        }
+
+        .sc-about .container {
+            position: relative;
+            z-index: 2;
         }
 
         .about-wrapper {
@@ -417,7 +977,7 @@
             flex: 1;
             min-width: 300px;
             aspect-ratio: 1/1;
-            background-color: var(--slate-200);
+            background-color: var(--dark-800);
             border-radius: 20px;
             position: relative;
         }
@@ -429,7 +989,7 @@
             left: -20px;
             width: 100%;
             height: 100%;
-            border: 2px solid var(--brand-action);
+            border: 2px solid var(--brand-primary-gold);
             border-radius: 20px;
             z-index: -1;
         }
@@ -442,7 +1002,8 @@
         .about-text h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: var(--slate-800);
+            color: var(--gold-400);
+            text-shadow: 0 2px 20px rgba(255, 215, 0, 0.2);
         }
 
         .about-stats {
@@ -452,16 +1013,159 @@
             margin-top: 30px;
         }
 
+        /* Floating stats with levitation effect */
+        .astat {
+            animation: float 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .astat:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .astat:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .astat:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
         .astat h4 {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--brand-action);
+            color: var(--brand-primary-gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .astat:hover {
+            transform: translateY(-20px) scale(1.05);
+        }
+
+        .astat:hover h4 {
+            color: var(--gold-400);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
         }
 
         /* Contact Section */
         .contact-section {
             padding: 80px 0;
-            background: var(--slate-50);
+            background: linear-gradient(135deg,
+                    var(--dark-950) 0%,
+                    var(--dark-900) 30%,
+                    var(--dark-800) 50%,
+                    var(--dark-900) 70%,
+                    var(--dark-950) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 30s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Grid pattern overlay */
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+            animation: gridMove 40s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Floating orbs */
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle,
+                    rgba(212, 175, 55, 0.12) 0%,
+                    rgba(255, 215, 0, 0.08) 30%,
+                    transparent 70%);
+            border-radius: 50%;
+            top: -400px;
+            left: -200px;
+            animation: orbFloat1 25s ease-in-out infinite;
+            filter: blur(60px);
+        }
+
+        @keyframes orbFloat1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(150px, 200px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-100px, 100px) scale(0.9);
+            }
+        }
+
+        .contact-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Additional decorative elements */
+        .contact-section .container::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle,
+                    rgba(255, 215, 0, 0.08) 0%,
+                    transparent 70%);
+            border-radius: 50%;
+            bottom: -300px;
+            right: -200px;
+            animation: orbFloat2 30s ease-in-out infinite;
+            filter: blur(70px);
+            pointer-events: none;
+        }
+
+        @keyframes orbFloat2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-100px, -150px) rotate(180deg);
+            }
         }
 
         .contact-grid {
@@ -472,49 +1176,86 @@
         }
 
         .contact-form-wrapper {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: rgba(13, 13, 21, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(212, 175, 55, 0.5) 50%,
+                    transparent 100%);
+            border-radius: 25px 25px 0 0;
+        }
+
+        .contact-form-wrapper:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .contact-form-wrapper h3 {
-            font-size: 1.8rem;
-            color: var(--slate-900);
-            margin-bottom: 15px;
+            font-size: 2.3rem;
+            color: var(--gold-400);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .contact-form-wrapper p {
+            color: var(--dark-100);
+            margin-bottom: 25px;
+            opacity: 0.8;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
             font-weight: 600;
-            color: var(--slate-700);
-            margin-bottom: 6px;
+            color: var(--gold-300);
+            margin-bottom: 8px;
             font-size: 0.95rem;
+            letter-spacing: 0.3px;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 10px 14px;
-            border: 2px solid var(--slate-200);
-            border-radius: 10px;
+            padding: 14px 16px;
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
             font-size: 1rem;
             font-family: inherit;
             transition: all 0.3s ease;
-            background: white;
+            background: rgba(10, 10, 15, 0.5);
+            color: var(--dark-50);
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--brand-action);
-            box-shadow: 0 0 0 3px rgba(188, 37, 39, 0.1);
+            border-color: var(--brand-primary-gold);
+            background: rgba(10, 10, 15, 0.7);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1),
+                0 4px 12px rgba(212, 175, 55, 0.15);
         }
 
         .form-group textarea {
@@ -525,8 +1266,8 @@
         .submit-button {
             width: 100%;
             padding: 16px 32px;
-            background: var(--brand-action);
-            color: white;
+            background: linear-gradient(135deg, var(--brand-primary-gold) 0%, var(--gold-600) 100%);
+            color: var(--dark-900);
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -537,13 +1278,13 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 4px 15px rgba(188, 37, 39, 0.3);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .submit-button:hover {
-            background: #991b1b;
+            background: linear-gradient(135deg, var(--gold-400) 0%, var(--brand-primary-gold) 100%);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(188, 37, 39, 0.4);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
 
         .contact-info-wrapper {
@@ -553,15 +1294,16 @@
         }
 
         .contact-info-card {
-            background: white;
+            background: var(--dark-800);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--dark-700);
         }
 
         .contact-info-card h3 {
             font-size: 1.8rem;
-            color: var(--slate-900);
+            color: var(--gold-300);
             margin-bottom: 20px;
         }
 
@@ -571,7 +1313,7 @@
             gap: 15px;
             margin-bottom: 15px;
             padding-bottom: 15px;
-            border-bottom: 1px solid var(--slate-100);
+            border-bottom: 1px solid var(--dark-600);
         }
 
         .contact-item:last-of-type {
@@ -582,51 +1324,52 @@
         .contact-icon {
             width: 45px;
             height: 45px;
-            background: var(--red-50);
+            background: rgba(212, 175, 55, 0.1);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            border: 1px solid var(--gold-700);
         }
 
         .contact-icon i {
-            color: var(--brand-action);
+            color: var(--brand-primary-gold);
             font-size: 1.1rem;
         }
 
         .contact-details h4 {
             font-size: 1rem;
-            color: var(--slate-900);
+            color: var(--dark-50);
             margin-bottom: 5px;
             font-weight: 600;
         }
 
         .contact-details p {
-            color: var(--slate-600);
+            color: var(--dark-200);
             margin: 0;
             line-height: 1.6;
         }
 
         .contact-details a {
-            color: var(--brand-action);
+            color: var(--brand-primary-gold);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .contact-details a:hover {
-            color: #991b1b;
+            color: var(--gold-400);
             text-decoration: underline;
         }
 
         .social-media {
             padding-top: 20px;
-            border-top: 1px solid var(--slate-100);
+            border-top: 1px solid var(--dark-600);
         }
 
         .social-media h4 {
             font-size: 1rem;
-            color: var(--slate-900);
+            color: var(--dark-50);
             margin-bottom: 15px;
             font-weight: 600;
         }
@@ -639,21 +1382,23 @@
         .social-links a {
             width: 45px;
             height: 45px;
-            background: var(--slate-100);
+            background: var(--dark-800);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--slate-700);
+            color: var(--dark-200);
             font-size: 1.2rem;
             transition: all 0.3s ease;
             text-decoration: none;
+            border: 1px solid var(--dark-700);
         }
 
         .social-links a:hover {
-            background: var(--brand-action);
-            color: white;
+            background: linear-gradient(135deg, var(--brand-primary-gold) 0%, var(--gold-600) 100%);
+            color: var(--dark-900);
             transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .map-container {
@@ -671,31 +1416,32 @@
         /* Blog Floating Card Section */
         .blog-card-section {
             padding: 80px 0;
-            background: white;
+            background: var(--dark-950);
         }
 
         .blog-floating-card {
-            background: linear-gradient(-35deg,
-                    var(--amber-200) 0%,
-                    var(--brand-accent) 20%,
-                    var(--amber-600) 50%,
-                    var(--brand-accent) 80%,
-                    var(--amber-300) 100%);
-            background-size: 500% 500%;
-            animation: gradientShift 8s ease-in-out infinite;
+            background: linear-gradient(135deg,
+                    var(--dark-950) 0%,
+                    var(--dark-900) 25%,
+                    var(--dark-800) 50%,
+                    var(--dark-900) 75%,
+                    var(--dark-950) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease-in-out infinite;
             border-radius: 30px;
             padding: 60px;
             display: flex;
             align-items: center;
             gap: 60px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
             position: relative;
             overflow: hidden;
+            border: 2px solid var(--brand-primary-gold);
         }
 
         .blog-card-content {
             flex: 1;
-            color: white;
+            color: var(--gold-200);
             z-index: 2;
         }
 
@@ -704,6 +1450,8 @@
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
+            color: var(--gold-400);
+            text-shadow: 0 2px 30px rgba(255, 215, 0, 0.3);
         }
 
         .blog-card-content p {
@@ -711,25 +1459,26 @@
             margin-bottom: 30px;
             opacity: 0.95;
             line-height: 1.6;
+            color: var(--dark-100);
         }
 
         .blog-cta-button {
             display: inline-block;
-            background: white;
-            color: var(--brand-action);
+            background: linear-gradient(135deg, var(--brand-primary-gold) 0%, var(--gold-600) 100%);
+            color: var(--dark-900);
             padding: 14px 32px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .blog-cta-button:hover {
-            background: var(--slate-100);
+            background: linear-gradient(135deg, var(--gold-400) 0%, var(--brand-primary-gold) 100%);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
 
         .blog-card-image {
@@ -741,13 +1490,13 @@
         }
 
         .blog-mockup {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(212, 175, 55, 0.05);
             backdrop-filter: blur(10px);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border: 2px dashed rgba(212, 175, 55, 0.3);
             border-radius: 20px;
             padding: 60px 40px;
             text-align: center;
-            color: white;
+            color: var(--gold-300);
             min-height: 300px;
             display: flex;
             flex-direction: column;
@@ -758,7 +1507,30 @@
         /* Pricing Section */
         .pricing-section {
             padding: 80px 0;
-            background: var(--slate-50);
+            background: linear-gradient(180deg,
+                    var(--dark-900) 0%,
+                    var(--dark-950) 50%,
+                    var(--dark-900) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle gradient orbs */
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -300px;
+            right: -200px;
+            filter: blur(80px);
+        }
+
+        .pricing-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         .pricing-grid {
@@ -766,103 +1538,165 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 50px;
+            padding-top: 20px;
         }
 
         .pricing-card {
-            background: white;
-            border-radius: 20px;
+            background: rgba(13, 13, 21, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 25px;
             overflow: hidden;
             position: relative;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-            border-color: var(--brand-action);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(13, 13, 21, 0.7);
         }
 
         .pricing-card.featured {
-            border: 2px solid var(--brand-action);
-            box-shadow: 0 8px 30px rgba(188, 37, 39, 0.15);
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.2);
+            transform: scale(1.05);
+            overflow: visible;
         }
 
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Badge elegante en la parte superior */
         .pricing-card.featured::before {
             content: 'MÁS POPULAR';
             position: absolute;
-            top: 20px;
-            right: -35px;
-            background: var(--brand-action);
-            color: white;
-            padding: 5px 45px;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--brand-primary-gold) 0%, var(--gold-600) 100%);
+            color: var(--dark-950);
+            padding: 6px 20px;
             font-weight: 700;
             font-size: 0.7rem;
             text-transform: uppercase;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 10px rgba(188, 37, 39, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
             z-index: 10;
+            letter-spacing: 1px;
         }
 
         .pricing-header {
-            padding: 35px 30px 25px;
+            padding: 40px 30px 30px;
             text-align: center;
-            background: linear-gradient(135deg, var(--slate-50) 0%, white 100%);
+            background: linear-gradient(135deg,
+                    rgba(26, 26, 46, 0.6) 0%,
+                    rgba(13, 13, 21, 0.4) 100%);
+            position: relative;
+        }
+
+        .pricing-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(212, 175, 55, 0.3) 50%,
+                    transparent 100%);
         }
 
         .pricing-header h3 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--slate-900);
+            margin-bottom: 10px;
+            color: var(--gold-300);
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
         }
 
         .pricing-subtitle {
             font-size: 0.95rem;
-            color: var(--slate-600);
+            color: var(--dark-100);
             margin: 0;
+            opacity: 0.8;
         }
 
         .pricing-price {
-            padding: 25px 30px;
+            padding: 35px 30px;
             text-align: center;
-            background: white;
-            border-top: 1px solid var(--slate-100);
-            border-bottom: 1px solid var(--slate-100);
+            background: rgba(10, 10, 15, 0.3);
+            position: relative;
+        }
+
+        .pricing-price::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(212, 175, 55, 0.2) 50%,
+                    transparent 100%);
         }
 
         .pricing-price .currency {
-            font-size: 1.3rem;
-            color: var(--brand-action);
+            font-size: 1.75rem;
+            color: var(--brand-primary-gold);
             font-weight: 700;
             vertical-align: super;
-            margin-right: 2px;
+            margin-right: 3px;
         }
 
         .pricing-price .amount {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
-            color: var(--brand-action);
+            color: var(--gold-400);
             line-height: 1;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover .pricing-price .amount {
+            transform: scale(1.05);
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
         }
 
         .pricing-price .duration {
             font-size: 0.9rem;
-            color: var(--slate-500);
-            margin: 8px 0 0 0;
+            color: var(--dark-200);
+            margin: 12px 0 0 0;
             font-weight: 500;
+            opacity: 0.7;
         }
 
         .pricing-features {
-            padding: 30px;
+            padding: 35px 30px;
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
         }
 
         .feature-item:last-child {
@@ -870,7 +1704,7 @@
         }
 
         .feature-item i {
-            color: var(--brand-action);
+            color: var(--brand-primary-gold);
             font-size: 1.1rem;
             margin-top: 2px;
             flex-shrink: 0;
@@ -880,7 +1714,7 @@
             margin: 0;
             font-size: 0.95rem;
             line-height: 1.6;
-            color: var(--slate-700);
+            color: var(--dark-100);
         }
 
         .feature-divider {
@@ -889,8 +1723,8 @@
 
         .pricing-cta {
             display: block;
-            background: var(--brand-action);
-            color: white;
+            background: linear-gradient(135deg, var(--brand-primary-gold) 0%, var(--gold-600) 100%);
+            color: var(--dark-900);
             text-align: center;
             padding: 16px 30px;
             margin: 0 30px 30px 30px;
@@ -899,20 +1733,20 @@
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(188, 37, 39, 0.3);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .pricing-cta:hover {
-            background: #991b1b;
+            background: linear-gradient(135deg, var(--gold-400) 0%, var(--brand-primary-gold) 100%);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(188, 37, 39, 0.4);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
 
         .pricing-note {
             padding: 0 30px 30px 30px;
             font-size: 0.85rem;
             line-height: 1.6;
-            color: var(--slate-600);
+            color: var(--dark-200);
             margin: 0;
             text-align: center;
         }
@@ -930,6 +1764,7 @@
             overflow: hidden;
             position: relative;
             width: 100%;
+            padding: 20px 0;
         }
 
         .team-track {
@@ -956,30 +1791,52 @@
         .team-member {
             flex-shrink: 0;
             width: 180px;
-            background: white;
-            border-radius: 12px;
+            background: rgba(13, 13, 21, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
         }
 
+        /* Shine effect on team card */
+
+
         .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
+                0 0 15px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(13, 13, 21, 0.8);
         }
 
         .team-photo {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: var(--slate-100);
+            background: linear-gradient(135deg, var(--dark-800) 0%, var(--dark-700) 100%);
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            border: 2px solid var(--gold-700);
+            transition: all 0.4s ease;
         }
+
+        /* Rotating border on photo */
+
+
+        .team-member:hover .team-photo {
+            transform: scale(1.05);
+            border-color: var(--gold-600);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
 
         .team-photo img {
             width: 100%;
@@ -990,14 +1847,24 @@
         .team-info h5 {
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--slate-900);
+            color: var(--gold-300);
             margin: 0 0 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .team-info h5 {
+            color: var(--gold-400);
         }
 
         .team-info p {
             font-size: 0.85rem;
-            color: var(--slate-600);
+            color: var(--dark-200);
             margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .team-info p {
+            color: var(--gold-200);
         }
 
         /* Responsive */
@@ -1039,8 +1906,29 @@
         }
 
         @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content-col {
+                text-align: center;
+            }
+
             .landing-hero h1 {
                 font-size: 2.5rem;
+            }
+
+            .landing-hero p {
+                max-width: 100%;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .video-wrapper {
+                max-width: 100%;
             }
 
             .about-wrapper {
@@ -1136,20 +2024,52 @@
     <div id="global-navbar"></div>
 
     <!-- Hero Section -->
-    <header class="landing-hero">
+    <header class="landing-hero" id="vanta-hero">
         <div class="container">
-            <span class="hero-badge">Asesoría Legal Internacional</span>
-            <h1>Tu Futuro Legal<br>Comienza Aquí</h1>
-            <p>Expertos en Inmigración y Extranjería. Asesoría profesional para residencias, visados, nacionalidades y
-                trámites migratorios en múltiples países.</p>
-            <div class="hero-actions">
-                <a href="https://wa.me/34682518339" target="_blank" class="cta-button">
-                    Agendar Evaluación Gratuita <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="#servicios" class="cta-button"
-                    style="background: white; color: var(--slate-900); margin-left: 15px;">
-                    Ver Servicios
-                </a>
+            <div class="hero-grid">
+                <!-- Left Column - Content -->
+                <div class="hero-content-col">
+                    <span class="hero-badge">Asesoría Legal Internacional</span>
+                    <h1>Tu Futuro Legal<br>Comienza Aquí</h1>
+                    <p>Expertos en Inmigración y Extranjería. Asesoría profesional para residencias, visados,
+                        nacionalidades y
+                        trámites migratorios en múltiples países.</p>
+                    <div class="hero-actions">
+                        <a href="https://wa.me/34682518339" target="_blank" class="cta-button">
+                            Agendar Evaluación Gratuita <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#servicios" class="cta-button secondary">
+                            Ver Servicios
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Video -->
+                <div class="hero-video-col">
+                    <div class="video-wrapper">
+                        <!-- Placeholder para el video - Reemplaza con tu video real -->
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Video de Bienvenida</p>
+                            <span>Inserta aquí tu video usando iframe o video tag</span>
+                        </div>
+                        <!-- Ejemplo de cómo agregar un video de YouTube:
+                        <iframe 
+                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID?controls=1&autoplay=0&mute=0" 
+                            title="Video de Bienvenida"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        -->
+                        <!-- O para un video local:
+                        <video controls poster="ruta/a/thumbnail.jpg">
+                            <source src="ruta/a/tu-video.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        -->
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -1238,14 +2158,13 @@
                                             style="color: var(--brand-accent); margin-right: 10px;"></i>
                                         Bolsa de empleo activa</li>
                                 </ul>
-                                <a href="screens/countries/spain/curso-cap/index.html" class="cta-button"
-                                    style="background: white; color: var(--brand-action);">
+                                <a href="screens/countries/spain/curso-cap/index.html" class="cta-button secondary">
                                     Ver Información del Programa
                                 </a>
                             </div>
-                            <!-- Placeholder for Image -->
-                            <div class="promo-image">
-                                <span style="color: white; opacity: 0.7;">[ Imagen: Conductor / Camión / Clase ]</span>
+                            <!-- CAP Course Image -->
+                            <div class="promo-image"
+                                style="background-image: url('assets/images/services/curso-cap.png'); background-size: cover; background-position: center;">
                             </div>
                         </div>
                     </div>
@@ -1274,15 +2193,15 @@
             <!-- Featured Destination: Spain -->
             <div class="featured-destination" style="margin-bottom: 40px;">
                 <article class="country-card horizontal-card">
-                    <div class="country-img-placeholder horizontal-img">
-                        [ Imagen: Madrid / Paisaje España ]
+                    <div class="country-img-placeholder horizontal-img"
+                        style="background-image: url('assets/images/countries/spain.png'); background-size: cover; background-position: center;">
                     </div>
                     <div class="country-content horizontal-content">
                         <div class="country-header">
                             <h3 class="country-title">España</h3>
                             <span class="country-flag"><span class="flag-icon flag-icon-es"></span></span>
                         </div>
-                        <p style="margin-bottom: 20px; color: var(--slate-600);">Líderes en extranjería española.
+                        <p style="margin-bottom: 20px; color: var(--dark-200);">Líderes en extranjería española.
                             Gestionamos tu residencia, nacionalidad y permisos con la mayor tasa de éxito.</p>
                         <div class="Horizontal-services-grid"
                             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px;">
@@ -1307,21 +2226,19 @@
 
             <!-- Secondary Destinations Grid -->
             <div class="secondary-countries-grid">
-                <!-- Venezuela -->
+                <!-- Dubai -->
                 <article class="country-card">
-                    <div class="country-img-placeholder">
-                        [ Imagen: Caracas / Venezuela ]
+                    <div class="country-img-placeholder"
+                        style="background-image: url('assets/images/countries/dubai.png'); background-size: cover; background-position: center;">
                     </div>
                     <div class="country-content">
                         <div class="country-header">
-                            <h3 class="country-title">Venezuela</h3>
-                            <span class="country-flag"><span class="flag-icon flag-icon-ve"></span></span>
+                            <h3 class="country-title">Dubái</h3>
+                            <span class="country-flag"><span class="flag-icon flag-icon-ae"></span></span>
                         </div>
                         <ul class="service-list-preview">
-                            <li><i class="fas fa-check"></i> Pasaporte</li>
-                            <li><i class="fas fa-check"></i> Apostilla</li>
-                            <li><i class="fas fa-check"></i> Antecedentes Penales</li>
-                            <li><i class="fas fa-check"></i> Cédula de Identidad</li>
+                            <li><i class="fas fa-check"></i> Residencia Dorada</li>
+                            <li><i class="fas fa-check"></i> Asesoría General</li>
                         </ul>
                         <a href="#" class="country-link">Ver Servicios <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -1329,8 +2246,8 @@
 
                 <!-- USA -->
                 <article class="country-card">
-                    <div class="country-img-placeholder">
-                        [ Imagen: New York / USA ]
+                    <div class="country-img-placeholder"
+                        style="background-image: url('assets/images/countries/usa.png'); background-size: cover; background-position: center;">
                     </div>
                     <div class="country-content">
                         <div class="country-header">
@@ -1349,8 +2266,8 @@
 
                 <!-- Portugal -->
                 <article class="country-card">
-                    <div class="country-img-placeholder">
-                        [ Imagen: Lisboa / Portugal ]
+                    <div class="country-img-placeholder"
+                        style="background-image: url('assets/images/countries/portugal.png'); background-size: cover; background-position: center;">
                     </div>
                     <div class="country-content">
                         <div class="country-header">
@@ -1367,19 +2284,21 @@
                     </div>
                 </article>
 
-                <!-- Dubai -->
+                <!-- Venezuela -->
                 <article class="country-card">
-                    <div class="country-img-placeholder">
-                        [ Imagen: Dubái / EAU ]
+                    <div class="country-img-placeholder"
+                        style="background-image: url('assets/images/countries/venezuela.png'); background-size: cover; background-position: center;">
                     </div>
                     <div class="country-content">
                         <div class="country-header">
-                            <h3 class="country-title">Dubái</h3>
-                            <span class="country-flag"><span class="flag-icon flag-icon-ae"></span></span>
+                            <h3 class="country-title">Venezuela</h3>
+                            <span class="country-flag"><span class="flag-icon flag-icon-ve"></span></span>
                         </div>
                         <ul class="service-list-preview">
-                            <li><i class="fas fa-check"></i> Residencia Dorada</li>
-                            <li><i class="fas fa-check"></i> Asesoría General</li>
+                            <li><i class="fas fa-check"></i> Pasaporte</li>
+                            <li><i class="fas fa-check"></i> Apostilla</li>
+                            <li><i class="fas fa-check"></i> Antecedentes Penales</li>
+                            <li><i class="fas fa-check"></i> Cédula de Identidad</li>
                         </ul>
                         <a href="#" class="country-link">Ver Servicios <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -1395,20 +2314,20 @@
                 <div class="about-image">
                     <!-- Placeholder -->
                     <div
-                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--slate-500); border-radius: 20px;">
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--dark-300); border-radius: 20px;">
                         [ Foto: Abog. Milagros Mena ]
                     </div>
                 </div>
                 <div class="about-text">
-                    <span style="color: var(--brand-action); font-weight: 600; text-transform: uppercase;">Sobre
+                    <span style="color: var(--brand-primary-gold); font-weight: 600; text-transform: uppercase;">Sobre
                         Nosotros</span>
                     <h2>Comprometidos con tu éxito migratorio</h2>
-                    <p style="margin-bottom: 20px; color: var(--slate-600); font-size: 1.1rem;">
+                    <p style="margin-bottom: 20px; color: var(--dark-200); font-size: 1.1rem;">
                         Soy <strong>Milagros Mena</strong>, abogada colegiada y fundadora de Asesoría para Inmigrantes.
                         Nuestro despacho nace con la misión de brindar seguridad jurídica, honestidad y claridad en cada
                         trámite.
                     </p>
-                    <p style="margin-bottom: 30px; color: var(--slate-600);">
+                    <p style="margin-bottom: 30px; color: var(--dark-200);">
                         A diferencia de otros gestores, analizamos tu perfil de manera integral para ofrecerte la vía
                         más segura y efectiva para obtener tu residencia. No vendemos trámites, construimos planes de
                         vida.
@@ -1431,14 +2350,14 @@
 
                     <!-- Team Carousel -->
                     <div class="team-carousel-container">
-                        <h4 style="font-size: 1.1rem; color: var(--slate-900); margin-bottom: 20px; font-weight: 600;">
+                        <h4 style="font-size: 1.1rem; color: var(--gold-300); margin-bottom: 20px; font-weight: 600;">
                             Nuestro Equipo</h4>
                         <div class="team-carousel">
                             <div class="team-track">
                                 <!-- Team Member 1 -->
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Milagros Mena</h5>
@@ -1448,7 +2367,7 @@
                                 <!-- Team Member 2 -->
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Carlos Rodríguez</h5>
@@ -1458,7 +2377,7 @@
                                 <!-- Team Member 3 -->
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Ana Martínez</h5>
@@ -1468,7 +2387,7 @@
                                 <!-- Team Member 4 -->
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Luis García</h5>
@@ -1478,7 +2397,7 @@
                                 <!-- Team Member 5 -->
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>María López</h5>
@@ -1488,7 +2407,7 @@
                                 <!-- Duplicate for infinite scroll -->
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Milagros Mena</h5>
@@ -1497,7 +2416,7 @@
                                 </div>
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Carlos Rodríguez</h5>
@@ -1506,7 +2425,7 @@
                                 </div>
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Ana Martínez</h5>
@@ -1515,7 +2434,7 @@
                                 </div>
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>Luis García</h5>
@@ -1524,7 +2443,7 @@
                                 </div>
                                 <div class="team-member">
                                     <div class="team-photo">
-                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--slate-400);"></i>
+                                        <i class="fas fa-user" style="font-size: 2rem; color: var(--dark-400);"></i>
                                     </div>
                                     <div class="team-info">
                                         <h5>María López</h5>
@@ -1763,41 +2682,78 @@
         </div>
     </section>
     <!-- Testimonials Section (Reused styles from main.css roughly, adapted structure) -->
-    <section class="testimonials" style="background: var(--slate-50); padding: 80px 0;">
+    <section class="testimonials" style="background: var(--dark-950); padding: 80px 0;">
         <div class="container">
             <div class="section-header">
                 <h2>Clientes Felices</h2>
                 <p>Historias reales de personas que ya viven su sueño.</p>
             </div>
 
-            <!-- Simple Grid for Testimonials -->
+            <!-- Google Reviews Style Cards -->
             <div class="features-grid" style="margin-top: 40px;">
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+                <!-- Review 1 -->
+                <div class="feature-card google-review-card" style="text-align: left; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                        <div
+                            style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #4285f4, #34a853); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">
+                            S</div>
+                        <div>
+                            <strong style="color: var(--gold-300); display: block;">Sofia R.</strong>
+                            <span style="font-size: 0.85rem; color: var(--dark-200);">hace 2 semanas</span>
+                        </div>
+                    </div>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 1.1rem;">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Excelente atención. Me ayudaron con mi visado
-                        de estudiante en España y todo salió perfecto. Milagros es muy atenta."</p>
-                    <strong>- Sofia R. (Chile)</strong>
+                    <p style="margin-bottom: 15px; line-height: 1.6; color: var(--dark-100);">Excelente atención. Me
+                        ayudaron con mi visado de estudiante en España y todo salió perfecto. Milagros es muy atenta y
+                        profesional.</p>
+                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                        alt="Google" style="height: 16px; opacity: 0.7; margin-top: 10px;">
                 </div>
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+
+                <!-- Review 2 -->
+                <div class="feature-card google-review-card" style="text-align: left; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                        <div
+                            style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ea4335, #fbbc04); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">
+                            C</div>
+                        <div>
+                            <strong style="color: var(--gold-300); display: block;">Carlos M.</strong>
+                            <span style="font-size: 0.85rem; color: var(--dark-200);">hace 1 mes</span>
+                        </div>
+                    </div>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 1.1rem;">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Logré mi Golden Visa en Dubai gracias a su
-                        equipo. El proceso fue rápido y transparente. 100% recomendados."</p>
-                    <strong>- Carlos M. (España)</strong>
+                    <p style="margin-bottom: 15px; line-height: 1.6; color: var(--dark-100);">Logré mi Golden Visa en
+                        Dubai gracias a su equipo. El proceso fue rápido y transparente. 100% recomendados.</p>
+                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                        alt="Google" style="height: 16px; opacity: 0.7; margin-top: 10px;">
                 </div>
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <div style="color: var(--brand-accent); margin-bottom: 15px;">
+
+                <!-- Review 3 -->
+                <div class="feature-card google-review-card" style="text-align: left; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                        <div
+                            style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #34a853, #4285f4); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">
+                            L</div>
+                        <div>
+                            <strong style="color: var(--gold-300); display: block;">Laura V.</strong>
+                            <span style="font-size: 0.85rem; color: var(--dark-200);">hace 3 semanas</span>
+                        </div>
+                    </div>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 1.1rem;">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Resolvieron mi caso de nacionalidad española
-                        que estaba atascado años. Profesionalidad total."</p>
-                    <strong>- Laura V. (Venezuela)</strong>
+                    <p style="margin-bottom: 15px; line-height: 1.6; color: var(--dark-100);">Resolvieron mi caso de
+                        nacionalidad española que estaba atascado años. Profesionalidad total y excelentes resultados.
+                    </p>
+                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                        alt="Google" style="height: 16px; opacity: 0.7; margin-top: 10px;">
                 </div>
             </div>
         </div>
@@ -1815,11 +2771,8 @@
                         Explorar Blog y Recursos
                     </a>
                 </div>
-                <div class="blog-card-image">
-                    <div class="blog-mockup">
-                        <i class="fas fa-newspaper" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
-                        <p style="margin-top: 20px; opacity: 0.5;">[ Imagen: Mockup de Blog/Noticias ]</p>
-                    </div>
+                <div class="blog-card-image"
+                    style="background-image: url('assets/images/blog-mockup.png'); background-size: cover; background-position: center; border-radius: 20px; min-height: 350px;">
                 </div>
             </div>
         </div>
@@ -1832,6 +2785,29 @@
     <script src="src/js/components/Navbar.js"></script>
     <script src="src/js/components/Footer.js"></script>
     <script src="src/js/carousel.js"></script>
+
+    <!-- Initialize Vanta.js WAVES effect -->
+    <script>
+        // Wait for page to load
+        window.addEventListener('DOMContentLoaded', function () {
+            // Initialize Vanta.js WAVES effect on hero section
+            VANTA.WAVES({
+                el: "#vanta-hero",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x0a0a0f,        // Dark background color (dark-950)
+                shininess: 40.00,       // Gold-like shine
+                waveHeight: 15.00,      // Wave height
+                waveSpeed: 0.75,        // Speed of waves
+                zoom: 0.85              // Zoom level
+            })
+        });
+    </script>
 </body>
 
 </html>

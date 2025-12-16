@@ -4,10 +4,10 @@ body {
 }
 
 :root {
-    --navbar-height: 80px;
-    --navbar-bg: #FFFFFF;
-    --navbar-text: #1F2937;
-    --brand-action: #BC2527;
+    --navbar-height: 120px;
+    --navbar-bg: rgba(10, 10, 15, 0.3);
+    --navbar-text: var(--gold-300);
+    --brand-action: var(--brand-primary-gold);
 }
 
 .global-navbar {
@@ -17,42 +17,60 @@ body {
     width: 100%;
     height: var(--navbar-height);
     background-color: var(--navbar-bg);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .global-navbar.scrolled {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    height: 70px;
+    background-color: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(212, 175, 55, 0.15);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    height: 75px;
 }
 
 .navbar-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Logo - Override for Image */
+/* Logo - Larger Size */
 .navbar-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--navbar-text);
+    color: var(--gold-400);
+    transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
 }
 
 .brand-logo {
-    width: 60px;
-    /* Adjusted size */
+    width: 110px;
     height: auto;
     object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.3));
+}
+
+.global-navbar.scrolled .brand-logo {
+    width: 75px;
 }
 
 /* Nav Links */
@@ -72,19 +90,35 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: var(--navbar-text);
+    color: var(--gold-200);
     font-weight: 500;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
     padding: 10px 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--brand-primary-gold);
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--brand-action);
+    color: var(--gold-400);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .nav-link.active {
-    color: var(--brand-action);
+    color: var(--brand-primary-gold);
     font-weight: 600;
 }
 
@@ -93,16 +127,19 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
+    background: rgba(13, 13, 21, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     min-width: 240px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(212, 175, 55, 0.1);
     border-radius: 12px;
     padding: 15px 0;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 1001;
-    border: 1px solid #F3F4F6;
+    border: 1px solid rgba(212, 175, 55, 0.2);
     list-style: none;
 }
 
@@ -115,15 +152,15 @@ body {
 .dropdown-menu li a {
     display: block;
     padding: 10px 25px;
-    color: var(--navbar-text);
+    color: var(--dark-100);
     text-decoration: none;
     font-size: 0.95rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .dropdown-menu li a:hover {
-    background-color: var(--brand-action);
-    color: white;
+    background-color: rgba(212, 175, 55, 0.2);
+    color: var(--gold-400);
     padding-left: 30px;
 }
 
@@ -133,17 +170,20 @@ body {
     top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: white;
+    background: rgba(13, 13, 21, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     width: max-content;
     max-width: 90vw;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(212, 175, 55, 0.15);
     border-radius: 12px;
     padding: 30px;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 1001;
-    border: 1px solid #F3F4F6;
+    border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 /* Static positioning for wide/full-width menus */
@@ -196,7 +236,7 @@ body {
     gap: 10px;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #F3F4F6;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.2);
 }
 
 .mega-menu-icon {
@@ -206,7 +246,7 @@ body {
 .mega-menu-header h3 {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--navbar-text);
+    color: var(--gold-400);
     margin: 0;
 }
 
@@ -221,17 +261,17 @@ body {
 
 .mega-menu-list a {
     text-decoration: none;
-    color: #4B5563;
+    color: var(--dark-100);
     font-size: 0.95rem;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
     display: block;
-    padding: 4px 0;
+    padding: 6px 0;
 }
 
 .mega-menu-list a:hover {
-    color: var(--brand-action);
-    transform: translateX(3px);
-    transition: all 0.2s ease;
+    color: var(--gold-400);
+    transform: translateX(5px);
+    transition: all 0.3s ease;
 }
 
 /* CTA Button */
@@ -340,10 +380,13 @@ body {
         top: 100%;
         left: 0;
         width: 100%;
-        background: white;
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         flex-direction: column;
         padding: 20px 40px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         gap: 20px;
         align-items: flex-start;
     }
